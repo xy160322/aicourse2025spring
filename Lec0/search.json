@@ -1,0 +1,184 @@
+[
+  {
+    "objectID": "Lec0.html#开课背景",
+    "href": "Lec0.html#开课背景",
+    "title": "0x00 Introduction",
+    "section": "开课背景",
+    "text": "开课背景\n\n见课程手册：https://pkuschool.yuque.com/xqt6kg/sgwzno/kvcfcsi3xvo7yrvc\n人工智能时代\n人工智能教育者与学习者最好的时代：政策、资源、未来……\nthe gap与望而却步的瓶颈——前所未有的尝试\n\n本科或研究生——初三\n先纵后横（例）——见招拆招\n应用——原理\n\n做追随者还是做引领者？——DeepSeek的原始创新\n人工智能奥林匹克（NOAI/IOAI）"
+  },
+  {
+    "objectID": "Lec0.html#课程内容",
+    "href": "Lec0.html#课程内容",
+    "title": "0x00 Introduction",
+    "section": "课程内容",
+    "text": "课程内容\n\n一切的起点：初中数学\n每节课的起点：问题\n经典机器学习算法\n人工智能相关数学\nExcel、Geogebra、python（numpy、pandas、matplotlib、sklearn）等\n项目实践"
+  },
+  {
+    "objectID": "Lec0.html#目标与收获",
+    "href": "Lec0.html#目标与收获",
+    "title": "0x00 Introduction",
+    "section": "目标与收获",
+    "text": "目标与收获\n\n了解“问题-&gt;数据-&gt;模型-&gt;算法-&gt;编程应用”的流程（意识与思维）\n直观感受和掌握机器学习经典算法原理，并能实现与应用\n打好机器学习与相关数学基础，为未来更深入的专题学习做好准备（如深度学习、大模型、语音信号处理、强化学习等）\n课程内容适配国际人工智能奥林匹克中国区（NOAI）大纲，为未来参赛打下基础"
+  },
+  {
+    "objectID": "Lec0.html#建议与要求",
+    "href": "Lec0.html#建议与要求",
+    "title": "0x00 Introduction",
+    "section": "建议与要求",
+    "text": "建议与要求\n\n学习流程\n\n听课\n浏览讲义（在线网页）\n练习（玻尔平台）\n作业与评测（Online Judge平台）\n\n专注于课程内容本身\n考勤\n作业"
+  },
+  {
+    "objectID": "Lec0.html#评价",
+    "href": "Lec0.html#评价",
+    "title": "0x00 Introduction",
+    "section": "评价",
+    "text": "评价\n总分100分\n\n平时成绩50%，含平时作业、项目、课堂表现等\n考勤10%\n期中成绩20%，笔试\n期末成绩20%，笔试"
+  },
+  {
+    "objectID": "Lec0.html#声明",
+    "href": "Lec0.html#声明",
+    "title": "0x00 Introduction",
+    "section": "声明",
+    "text": "声明\n\n本课是基于中学数学的人工智能入门课，在严谨与易懂之间做了折衷与平衡\n本课所介绍的课外数学内容也许不能直接应用于课内数学考试"
+  },
+  {
+    "objectID": "Lec0.html#什么是人工智能",
+    "href": "Lec0.html#什么是人工智能",
+    "title": "0x00 Introduction",
+    "section": "什么是人工智能？",
+    "text": "什么是人工智能？\n\nArtificial Intelligence\n“人工智能就是研究如何使计算机去做过去只有人才能做的智能工作”\n“人工智能是研究使计算机来模拟人的某些思维过程和智能行为（如学习、推理、思考、规划等）的学科”。\n“利用数字计算机或者数字计算机控制的机器模拟、延伸和扩展人的智能，感知环境、获取知识并使用知识获得最佳结果的理论、方法、技术及应用系统。”"
+  },
+  {
+    "objectID": "Lec0.html#理解人工智能的一种视角函数-fx",
+    "href": "Lec0.html#理解人工智能的一种视角函数-fx",
+    "title": "0x00 Introduction",
+    "section": "理解人工智能的一种视角——函数 \\(f(x)\\)",
+    "text": "理解人工智能的一种视角——函数 \\(f(x)\\)\n\n可以把初中学过的 \\(y=kx+b\\) 写作 \\(f(x)=kx+b\\)\n\\(f(x)\\) 表示（强调）这是一个关于自变量 \\(x\\) 的函数\n\\(f(x)\\) 是一种对应法则，如果有一个 \\(x\\)，就有对应的函数值 \\(f(x)\\)\n\\(f\\) 的自变量可能不止一个\n\n如 \\(f(x,y)=x^2+y^2\\)\n如 \\(f(x_1,x_2,x_3,x_4)=x_1+x_2+x_4-x_3\\)\n\n\\(f\\) 可能没有显式的表达式，\n\n如 \\(f(x,y)\\) 中 \\(x,y\\) 表示身高与体重，\\(f(x,y)\\) 表示是否健康\n如 \\(f(x,y)\\) 中 \\(x,y\\) 表示经纬度坐标，\\(f(x,y)\\) 表示海拔\n\n自变量与函数值甚至可能不是数字\n\nf(听到\"How are you?\")=说\"fine thank you and you?\"\nf(听到\"你好\")=做出握手的动作"
+  },
+  {
+    "objectID": "Lec0.html#理解人工智能的一种视角函数-fx-1",
+    "href": "Lec0.html#理解人工智能的一种视角函数-fx-1",
+    "title": "0x00 Introduction",
+    "section": "理解人工智能的一种视角——函数 \\(f(x)\\)",
+    "text": "理解人工智能的一种视角——函数 \\(f(x)\\)\n\n\n1\n\n\n函数有时就像机器或黑箱，给予输入值 \\(x\\) 便产生唯一输出值 \\(f(x)\\)\n人作为具有智能的高级生物体，对于外界的输入（声、光、接触、味道等），经全身器官尤其是神经系统的处理，可以给出具有人类智能标准的输出\n人类拥有一个非常厉害的 \\(f\\)\n那么如何看待意识、思维、记忆、情绪、情感、意志？算是输入吗？输出又是什么？\n\n\n图片来源于知乎https://www.zhihu.com/question/433774315/answer/2973952325"
+  },
+  {
+    "objectID": "Lec0.html#什么是人工智能-1",
+    "href": "Lec0.html#什么是人工智能-1",
+    "title": "0x00 Introduction",
+    "section": "什么是人工智能？",
+    "text": "什么是人工智能？\n\n由于数字计算机的特点，需要把输入、输出以及 \\(f\\) “数字化”\n人工智能算法做的事情：希望找到一个“可计算的” \\(f\\)，能够对于输入给出“智能”的输出\n\n例：\\(f(x,y)\\) 中 \\(x,y\\) 表示身高与体重，\\(f(x,y)\\) 表示是否健康。 \\[\nf(x,y)=\n\\begin{cases}\n1\\quad 18.5\\leqslant \\frac{y}{x^2}\\leqslant 24\\\\\n0\\quad else\n\\end{cases}\n\\]\n\n针对特定类别的输入，研究出一个 \\(f\\) 能给出“智能”的输出，建立相关的信息系统"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能扫地机器人",
+    "href": "Lec0.html#身边的人工智能扫地机器人",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——扫地机器人",
+    "text": "身边的人工智能——扫地机器人"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能智能音箱",
+    "href": "Lec0.html#身边的人工智能智能音箱",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——智能音箱",
+    "text": "身边的人工智能——智能音箱"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能deepseek",
+    "href": "Lec0.html#身边的人工智能deepseek",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——DeepSeek",
+    "text": "身边的人工智能——DeepSeek"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能人脸识别",
+    "href": "Lec0.html#身边的人工智能人脸识别",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——人脸识别",
+    "text": "身边的人工智能——人脸识别"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能无人驾驶",
+    "href": "Lec0.html#身边的人工智能无人驾驶",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——无人驾驶",
+    "text": "身边的人工智能——无人驾驶"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能机器人",
+    "href": "Lec0.html#身边的人工智能机器人",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——机器人",
+    "text": "身边的人工智能——机器人"
+  },
+  {
+    "objectID": "Lec0.html#身边的人工智能人机博弈",
+    "href": "Lec0.html#身边的人工智能人机博弈",
+    "title": "0x00 Introduction",
+    "section": "身边的人工智能——人机博弈",
+    "text": "身边的人工智能——人机博弈\n\n棋类游戏：跳棋、国际象棋、围棋……\n电子游戏：DOTA2、王者荣耀……"
+  },
+  {
+    "objectID": "Lec0.html#人工智能的发展历史",
+    "href": "Lec0.html#人工智能的发展历史",
+    "title": "0x00 Introduction",
+    "section": "人工智能的发展历史",
+    "text": "人工智能的发展历史\n\n\n\n1956，达特茅斯会议\n图灵与图灵测试\n三次浪潮\n人类与计算机的“三盘棋” ……\n算力爆发、大数据时代、互联网时代……\n参考：尼克 《人工智能简史》\n当前，人工智能在迅猛发展且远未达到成熟，有可能一个新的发现就会让过去某领域的SOTA（State-of-the-art）成为历史"
+  },
+  {
+    "objectID": "Lec0.html#人工智能常见领域或技术",
+    "href": "Lec0.html#人工智能常见领域或技术",
+    "title": "0x00 Introduction",
+    "section": "人工智能常见领域或技术",
+    "text": "人工智能常见领域或技术\n\n\n\n语音识别与语音合成：人机对话、数字人\n图像技术：人脸识别、目标检测、图像分割\n自然语言处理：机器翻译、情感分析、大模型\n推荐系统：字节跳动、京东、淘宝\n具身智能：机器人、无人驾驶\n人机博弈\n模式识别\n数据挖掘\n机器学习——神经网络——深度学习\n强化学习\n生成式智能：图像、文本、音乐\n……"
+  },
+  {
+    "objectID": "Lec0.html#我们的课程学习什么",
+    "href": "Lec0.html#我们的课程学习什么",
+    "title": "0x00 Introduction",
+    "section": "我们的课程学习什么",
+    "text": "我们的课程学习什么\n\n有着特定一类输入的问题，想知道相应的输出\n已有历史的(输入,输出)数据\n\\(f\\) 的形式或参数未知\n通过学习算法找到“最优”的 \\(f\\)，使得 \\(f\\) 能够对新的输入预测出“靠谱”的输出"
+  },
+  {
+    "objectID": "Lec0.html#某弹簧伸长量-x-与力-y-的关系",
+    "href": "Lec0.html#某弹簧伸长量-x-与力-y-的关系",
+    "title": "0x00 Introduction",
+    "section": "某弹簧伸长量 \\(x\\) 与力 \\(y\\) 的关系",
+    "text": "某弹簧伸长量 \\(x\\) 与力 \\(y\\) 的关系"
+  },
+  {
+    "objectID": "Lec0.html#学习流程-1",
+    "href": "Lec0.html#学习流程-1",
+    "title": "0x00 Introduction",
+    "section": "学习流程",
+    "text": "学习流程\n\n听课\n浏览讲义（在线网页）\n练习（玻尔平台）\n作业与评测（Online Judge平台）"
+  },
+  {
+    "objectID": "Lec0.html#浏览在线讲义",
+    "href": "Lec0.html#浏览在线讲义",
+    "title": "0x00 Introduction",
+    "section": "浏览在线讲义",
+    "text": "浏览在线讲义\n\n讲义地址：https://xy160322.github.io/aicourse2025spring"
+  },
+  {
+    "objectID": "Lec0.html#进入玻尔平台课程页面练习",
+    "href": "Lec0.html#进入玻尔平台课程页面练习",
+    "title": "0x00 Introduction",
+    "section": "进入玻尔平台“课程页面”练习",
+    "text": "进入玻尔平台“课程页面”练习\n\n课程页面：https://www.bohrium.com/courses/7299657766\n点击“进入课程”（首次访问点击“立即报名”），选择本节课内容学习\n登录方法：\n\n自动弹出登录窗口（或点击左下角“登录”），点击“邮箱登录”\n再点击“密码登录”\n邮箱格式为：姓名全拼@bdfz.cn（注意此邮箱实际并不存在！）\n密码与邮箱相同\n例如“张三”同学的邮箱为：zhangsan@bdfz.cn"
+  },
+  {
+    "objectID": "Lec0.html#进入online-judge平台完成作业与评测",
+    "href": "Lec0.html#进入online-judge平台完成作业与评测",
+    "title": "0x00 Introduction",
+    "section": "进入Online Judge平台完成作业与评测",
+    "text": "进入Online Judge平台完成作业与评测\n\nOnline Judge平台：http://47.94.136.120/\n\n作业与自动评测平台\n也是本课程线上资源的总入口\n网址未来可能会简化\n\n登录账号：\n\n用户名：姓名全拼\n密码：与用户名相同\n\n使用方法：\n\n登录后点击“2025人工智能BDFZ”\n点击页面上方“比赛”，再点击本节课比赛标题\n点击右上方“参加比赛”，再点击左上方“题目列表”开始做题"
+  },
+  {
+    "objectID": "Lec0.html#进入online-judge平台完成作业与评测-1",
+    "href": "Lec0.html#进入online-judge平台完成作业与评测-1",
+    "title": "0x00 Introduction",
+    "section": "进入Online Judge平台完成作业与评测",
+    "text": "进入Online Judge平台完成作业与评测\n\n选择、填空题\n\n正常作答即可\n可随时点“递交”查看分数（之前作答会保留）\n\n代码题流程：\n\n编写好符合题目要求的代码（一般在玻尔平台中会给出模板）\n点击右上方的“递交”\n将代码复制粘贴至文本框内\n点击左下交“递交”按钮\n\n其它主要操作：任何时刻可以点击左上方“返回比赛列表”或“首页”来实现返回"
+  }
+]
