@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "Lec1.html#例北京某小区房价数据",
+    "href": "Lec1.html#例北京某小区房价数据",
+    "title": "0x01 线性回归",
+    "section": "例：北京某小区房价数据",
+    "text": "例：北京某小区房价数据\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\narea\nprice\n\n\n\n\n0\n62.9\n680\n\n\n1\n44.3\n485\n\n\n2\n57.4\n555\n\n\n3\n62.4\n620\n\n\n4\n57.4\n585\n\n\n5\n…\n…\n\n\n\n\n\n\n\n行、列，\n特征（属性）\n标签\n数据下载\n\n\n\nSpeaker notes go here."
+  },
+  {
+    "objectID": "Lec1.html#问题与假设",
+    "href": "Lec1.html#问题与假设",
+    "title": "0x01 线性回归",
+    "section": "问题与假设",
+    "text": "问题与假设\n\n问题：给定一组住房成交数据，每条数据有一个属性（面积 \\(area\\) ），一个标签（价格 \\(price\\) ），建立模型，能够实现给定一个新挂牌的房子的面积，预测它的成交价\n假设：所有\\((area,price)\\)点在同一条直线附近"
+  },
+  {
+    "objectID": "Lec1.html#建模",
+    "href": "Lec1.html#建模",
+    "title": "0x01 线性回归",
+    "section": "建模",
+    "text": "建模\n\n训练集 \\(T\\)：采集到的样本数据\n\n一个训练数据记为 \\((x,y)\\)，第 \\(i\\) 个训练数据记为 \\((x_i,y_i)\\)\n训练集大小：\\(m\\)\n\n\\(T=\\{(x_1,y_1),(x_2,y_2),...,(x_m,y_m)\\}=\\{(x_i,y_i)\\}\\)\n\n决策函数假设：\\(f(x)=kx+b\\)，属性 \\(x\\) 相应的预测结果 \\(f(x)\\)\n损失函数: \\(L(k,b;T)\\)，在已知训练集 \\(T\\) 的情况下关于决策函数参数 \\(k,b\\) 的函数，用于量化参数的效果，即在训练集上预测值与真实值的差距，一般越小越好。\n\n\\(L(k,b;T)=\\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)=\\frac{1}{m}\\sum\\limits_{i=1}^m(f(x_i)-y_i)^2\\)\n\n学习问题（最优化问题）：选择某种算法，如导数法、配方法、梯度下降法等，求解使得 \\(L(k,b;T)\\) 取最小值时的参数 \\(k,b\\)"
+  },
+  {
+    "objectID": "Lec1.html#建模-1",
+    "href": "Lec1.html#建模-1",
+    "title": "0x01 线性回归",
+    "section": "建模",
+    "text": "建模"
+  },
+  {
+    "objectID": "Lec1.html#练习",
+    "href": "Lec1.html#练习",
+    "title": "0x01 线性回归",
+    "section": "练习",
+    "text": "练习\n\n给定训练集 \\(T=\\{(1,2),(2,3),(3,4),(4,2)\\}\\)， \\(m=4\\)\n决策函数：假设 \\(f(x)=kx\\)\n写出损失函数，并求最优参数 \\(k\\)"
+  },
+  {
+    "objectID": "Lec1.html#切线与导数",
+    "href": "Lec1.html#切线与导数",
+    "title": "0x01 线性回归",
+    "section": "切线与导数",
+    "text": "切线与导数\n\n割线：记 \\(A\\) 为图像上一个定点，\\(B\\) 为图像上 \\(A\\) 附近的点，称直线 \\(AB\\) 为图像的割线\n切线：当 \\(B\\) 无限接近 \\(A\\) 时，割线 \\(AB\\) 无限接近经过 \\(A\\) 的一条直线 \\(l\\)，称 \\(l\\) 为图在点 \\(A\\) 处的切线。切线反映了切点附近函数值的变化趋势\n导数：切线的斜率"
+  },
+  {
+    "objectID": "Lec1.html#例fxfrac18x2-在点-a20.5-处的切线",
+    "href": "Lec1.html#例fxfrac18x2-在点-a20.5-处的切线",
+    "title": "0x01 线性回归",
+    "section": "例：\\(f(x)=\\frac{1}{8}x^2\\) 在点 \\(A(2,0.5)\\) 处的切线",
+    "text": "例：\\(f(x)=\\frac{1}{8}x^2\\) 在点 \\(A(2,0.5)\\) 处的切线"
+  },
+  {
+    "objectID": "Lec1.html#例fxfrac18x2-在点-a20.5-处的切线斜率",
+    "href": "Lec1.html#例fxfrac18x2-在点-a20.5-处的切线斜率",
+    "title": "0x01 线性回归",
+    "section": "例：\\(f(x)=\\frac{1}{8}x^2\\) 在点 \\(A(2,0.5)\\) 处的切线斜率",
+    "text": "例：\\(f(x)=\\frac{1}{8}x^2\\) 在点 \\(A(2,0.5)\\) 处的切线斜率\n\n方法一：记 \\(B\\) 点坐标为 \\(B(2+\\Delta x,f(2+\\Delta x))\\)，然后计算直线 \\(AB\\) 的斜率：\\(\\frac{f(2+\\Delta x)-0.5}{2+\\Delta x-2}\\)，给 \\(\\Delta x\\) 一个非常小的值，如 \\(0.00001\\)，得到切线斜率 \\(f'(2)\\) 的近似值，如 \\(0.50000125\\)，如果觉得不满意，就把 \\(\\Delta x\\) 再小一些……\n\ndef f(x):\n    return 1/8*x*x\nprint((f(2+0.00001)-0.5)/0.00001)\n\n方法二：对 \\(\\frac{f(2+\\Delta x)-0.5}{2+\\Delta x-2}\\) 继续进行推导，\\(\\frac{f(2+\\Delta x)-0.5}{2+\\Delta x-2}=\\frac{1}{2}+\\frac{1}{8}\\Delta x\\) ，当 \\(\\Delta x\\rightarrow 0\\) 时，\\(\\frac{f(2+\\Delta x)-0.5}{2+\\Delta x-2}\\rightarrow \\frac{1}{2}\\)，可以认为 \\(f'(2)=\\frac{1}{2}\\)\n事实上，\\(f(x)=\\frac{1}{8}x^2\\) 的过任意点 \\(A(x,f(x))\\) 的切线斜率 \\(f'(x)\\) 都可以按如上方法推导\n事实上，\\(f(x)=ax^2+bx+c\\) 的过点 \\(A(x,f(x))\\) 的切线斜率 \\(f'(x)\\) 也可按如上方法推导"
+  },
+  {
+    "objectID": "Lec1.html#练习-1",
+    "href": "Lec1.html#练习-1",
+    "title": "0x01 线性回归",
+    "section": "练习",
+    "text": "练习\n\n推导 \\(f(x)=2x^2+3x-4\\) 在任意点 \\(A(3,f(3))\\) 的导数\n推导 \\(f(x)=ax^2+bx+c\\) 在任意点 \\(A(x,f(x))\\) 的导数，其中 \\(a,b,c\\) 为参数"
+  },
+  {
+    "objectID": "Lec1.html#切线斜率与最值的关系",
+    "href": "Lec1.html#切线斜率与最值的关系",
+    "title": "0x01 线性回归",
+    "section": "切线斜率与最值的关系",
+    "text": "切线斜率与最值的关系"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降法",
+    "href": "Lec1.html#梯度下降法",
+    "title": "0x01 线性回归",
+    "section": "梯度下降法",
+    "text": "梯度下降法\n\n解析法（配方法）和导数法有局限性，有时损失函数 \\(L\\) 不容易直接求得最值点，或者 \\(L'\\) 不容易求得零点\n梯度下降法：从某一个选定的点出发，沿着梯度（导数）方向移动点，不断接近极值点的数值算法（有误差，但可控）。它是机器学习甚至更广泛领域常见的优化方法。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoints\nx\ny\n\n\n\n\nP1\n-2\n65.5\n\n\nP2\n-0.24\n11.292\n\n\nP3\n0.464\n2.61872\n\n\nP4\n0.7456\n1.231\n\n\nP5\n0.85824\n1.00896\n\n\nP6\n0.903296\n0.973433\n\n\nP7\n0.921318\n0.967749"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降法-1",
+    "href": "Lec1.html#梯度下降法-1",
+    "title": "0x01 线性回归",
+    "section": "梯度下降法",
+    "text": "梯度下降法\n\n考虑从一个点 \\(x_0\\) 开始逐步向最值点移动，最终能够到达（或无限接近）最值点\n\n选哪个点作为起点 \\(x_0\\) ？任意点？\n每次步长如何确定？\\[ x_{k+1}=x_k-\\alpha f'(x_k) \\]\n算法为什么是正确的？\n\n秘诀：切线指方向，导数定步长\n见house.xlsx演示"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降法收敛性证明",
+    "href": "Lec1.html#梯度下降法收敛性证明",
+    "title": "0x01 线性回归",
+    "section": "梯度下降法收敛性证明",
+    "text": "梯度下降法收敛性证明\n以 \\(f(x)=x^2\\) 为例，任选 \\(x_0\\) 为起点，更新规则 \\(x_{k+1}=x_k-\\alpha f'(x_k)(0\\leqslant \\alpha&lt;\\frac 1 2)\\)，随着\\(k\\)的增大，\\(f(x_k)\\rightarrow f(x^*)\\)，其中 \\(x^*\\) 为 \\(f(x)\\) 取得最小值的点\n\n由梯度下降更新公式：\\(x_{k+1}=x_k-\\alpha f'(x_k) =x_k-2\\alpha  x_k=x_k (1-2 \\alpha )\\)\n\\(x_k =x_{k-1}(1-2\\alpha)=x_{k-2}(1-2\\alpha)^2=x_{k-3}(1-2\\alpha)^3=...=x_{0}(1-2\\alpha)^k\\)\n由 \\(f(x)\\)的凸性，\\(\\forall a,b\\)，\\(f(b)\\geq f(a)+f'(a)(b-a)\\)（可将 \\(f(x)=x^2\\) 代入验证），取 \\(b=x^{*},a=x_k\\)，则有 \\[\\begin{align}\nf(x_k)- f(x^{*})&\\leqslant f'(x_k)(x_k-x^{*})\\\\\n&=2x_k(x_k-x^*)\\\\\n&=2\\left((x_k-\\frac{1}{2} x^*)^2-\\frac{1}{4} (x^*)^2\\right)\n\\end{align}\n\\]\n随着 \\(k\\) 的增大，由于 \\(0\\leqslant (1-2\\alpha)&lt;1\\)，所以当 \\(x_k\\rightarrow 0\\) 时，\\(2\\left((x_k-\\frac{1}{2} x^*)^2-\\frac{1}{4} (x^*)^2\\right)\\rightarrow 0\\)，而 \\(f(x_k)-f(x^*) \\geqslant 0\\)，所以 \\(f(x_k)\\rightarrow f(x^*)\\)"
+  },
+  {
+    "objectID": "Lec1.html#练习-2",
+    "href": "Lec1.html#练习-2",
+    "title": "0x01 线性回归",
+    "section": "练习",
+    "text": "练习\n使用梯度下降方法计算 \\(f(x)=2x^2+3x-4\\) 的最值，任选 \\(\\alpha\\) 和 \\(x_0\\)，并与配方法和导数法得到的结果进行比较"
+  },
+  {
+    "objectID": "Lec1.html#思考题",
+    "href": "Lec1.html#思考题",
+    "title": "0x01 线性回归",
+    "section": "思考题",
+    "text": "思考题\n以 \\(f(x)=ax^2+bx+c(a&gt;0)\\) 为例，任选 \\(x_0\\) 为起点，更新规则 \\(x_{k+1}=x_k-\\alpha f'(x_k)(0\\leqslant \\alpha&lt;\\frac{1}{2a})\\)，请证明：随着 \\(k\\) 的增大，\\(f(x_k)\\rightarrow f(x^*)\\)，其中 \\(x^*\\) 为 \\(f(x)\\) 取得最小值的点"
+  },
+  {
+    "objectID": "Lec1.html#动手计算",
+    "href": "Lec1.html#动手计算",
+    "title": "0x01 线性回归",
+    "section": "动手计算",
+    "text": "动手计算\n\n损失函数 \\(L(k;T)\\) 推导： \\[\\begin{align}\nL(k;T)&=\\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)\\\\&=\\frac{1}{m}\\sum\\limits_{i=1}^m(f(x_i)-y_i)^2=\\frac{1}{m}\\sum\\limits_{i=1}^m(kx_i-y_i)^2\\\\&=\\frac{1}{m}\\sum\\limits_{i=1}^m(k^2x_i^2-2kx_iy_i+y_i^2)\\\\&=\\frac{1}{m}((\\sum\\limits_{i=1}^mx_i^2)k^2+(-2\\sum\\limits_{i=1}^mx_iy_i)k+\\sum\\limits_{i=1}^my_i^2)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "Lec1.html#动手计算-1",
+    "href": "Lec1.html#动手计算-1",
+    "title": "0x01 线性回归",
+    "section": "动手计算",
+    "text": "动手计算\n\n\\(L(k;T)=\\frac{1}{m}((\\sum\\limits_{i=1}^mx_i^2)k^2+(-2\\sum\\limits_{i=1}^mx_iy_i)k+\\sum\\limits_{i=1}^my_i^2)\\)\n\\(L'(k;T)=\\frac{1}{m}(2(\\sum\\limits_{i=1}^mx_i^2)k-2\\sum\\limits_{i=1}^mx_iy_i)\\)，\\(k^*=\\frac{\\sum_{i=1}^mx_iy_i}{\\sum_{i=1}^mx_i^2}\\)\n方法一：手动计算（只要有足够的时间和耐心）\n方法二：Excel\n\n借助公式辅助手动计算（略）\n调用公式；使用散点图\n\n方法三：python\n\n编程模拟计算过程：解析法和导数法；梯度下降法\n调用现成的工具（如sklearn）"
+  },
+  {
+    "objectID": "Lec1.html#动手计算excel直接调用公式法",
+    "href": "Lec1.html#动手计算excel直接调用公式法",
+    "title": "0x01 线性回归",
+    "section": "动手计算——Excel直接调用公式法",
+    "text": "动手计算——Excel直接调用公式法\n\n在数据旁边选择一个空单元格，输入=LINEST(B2:B28,A2:A28,FALSE)\n\n=表示此单元格内容为公式\nLINEST表示求解线性回归参数的函数\nB2:B28处是 \\(y\\) 值的范围\nA2:A28处是 \\(x\\) 值的范围\nFALSE表示强制截距 \\(b\\) 为 \\(0\\)"
+  },
+  {
+    "objectID": "Lec1.html#动手计算excel散点图添加趋势线法",
+    "href": "Lec1.html#动手计算excel散点图添加趋势线法",
+    "title": "0x01 线性回归",
+    "section": "动手计算——Excel散点图添加趋势线法",
+    "text": "动手计算——Excel散点图添加趋势线法\n\n选中所有数据（包括列标题）\n点击“插入”——“散点图”\n点击图中任意一点（所有点将被选中）\n右键选择“添加趋势线”\n在右侧弹出的“设置趋势线格式”中勾选“设置截距”和“显示公式”"
+  },
+  {
+    "objectID": "Lec1.html#python实现梯度下降",
+    "href": "Lec1.html#python实现梯度下降",
+    "title": "0x01 线性回归",
+    "section": "python实现梯度下降",
+    "text": "python实现梯度下降\n\n以计算 \\(f(x)=\\frac{1}{4}(30k^2-56k+30)\\) 的最小值为例\n代码中#及之后的内容是注释，不会被运行\na=b是一个动作，可以不严谨地理解为把b代表的内容“传递”给a，即 \\(a\\leftarrow b\\)\n\ndef f(x): # 定义f(x)的计算方法\n    return (30*x*x-56*x+30)/4\n\ndef ff(x): # 定义f'(x)的计算方法\n    return (60*x-56)/4\n\nx=-2 # x0=-2\nalpha=0.04\nfor i in range(1,10+1):\n    # 将下一行的注释取消，可以输出每一步的计算过程\n    # print(f\"x{i-1}={x:.3f}, f'(x{i-1})=2*{x:.3f}+4={ff(x):.3f}; x{i}=x{i-1}-alpha*f'(x{i-1})={x:.3f}-{alpha}*{ff(x):.3f}={x-alpha*ff(x):.3f}\")\n    x=x-alpha*ff(x) # 计算下一个点\n\nprint(x) # 输出最后的x\nprint(f(x)) # 输出最后的f(x)"
+  },
+  {
+    "objectID": "Lec1.html#python实现线性回归",
+    "href": "Lec1.html#python实现线性回归",
+    "title": "0x01 线性回归",
+    "section": "python实现线性回归",
+    "text": "python实现线性回归\n\n\nfrom sklearn.linear_model import LinearRegression\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf=pd.read_csv(\"house.csv\")  # house.csv是数据源\nx=df[[\"area\"]] # area指明x列标题\ny=df[\"price\"] # price指明y列标题\nmodel=LinearRegression(fit_intercept=False) # 调用线性回归模型，且设置截距b=0\nmodel.fit(x,y) # 用把数据传递模型\nk=model.coef_ # 获取斜率结果\nprint(\"斜率\",model.coef_[0])\n\nimport numpy as np\ndef f(x):\n    return k*x\nfig=plt.figure(figsize=(15,9))\nax = fig.add_subplot(111)\nx=np.arange(min(x[\"area\"]),max(x[\"area\"]),0.01)\ny=f(x)\nax.plot(x,y)\nx=list(df[\"area\"])\ny=list(df[\"price\"])\nax.scatter(x,y)\nplt.show()\n\n\n\n斜率 10.114737008812858"
+  }
+]
