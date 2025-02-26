@@ -216,7 +216,7 @@
 <h2>例：北京某小区房价数据</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="4896e2d9" class="cell" data-execution_count="1">
+<div id="4cf0608d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -227,7 +227,7 @@
 </div>
 </div><div class="column" style="width:30%;">
 <div id="tbl-planet-measures" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="26">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="58">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -276,7 +276,7 @@
 <li>行、列，</li>
 <li>特征（属性）</li>
 <li>标签</li>
-<li><a href="house1.csv" class="external" download="test">数据下载</a></li>
+<li><a href="house.csv" class="external" download="test">数据下载</a></li>
 </ul>
 <!-- ## Slide with speaker notes
 
@@ -310,7 +310,7 @@ Speaker notes go here.
 <li>问题：给定一组住房成交数据，每条数据有一个属性（面积 <span class="math inline">\(area\)</span> ），一个标签（价格 <span class="math inline">\(price\)</span> ），建立模型，能够实现给定一个新挂牌的房子的面积，预测它的成交价</li>
 <li>假设：所有<span class="math inline">\((area,price)\)</span>点在同一条直线附近</li>
 </ul>
-<div id="6beaa71a" class="cell" data-execution_count="3">
+<div id="e89cb8a4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -550,6 +550,26 @@ L(k;T)&amp;=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4
 <li><p>事实上，<span class="math inline">\(f(x)=ax^2+bx+c\)</span> 的过点 <span class="math inline">\(A(x,f(x))\)</span> 的切线斜率 <span class="math inline">\(f'(x)\)</span> 也可按如上方法推导</p></li>
 </ul>
 </section>
+<section id="示例fxfrac18x2-在点-a20.5-处的切线斜率" class="slide level2">
+<h2>示例：<span class="math inline">\(f(x)=\frac{1}{8}x^2\)</span> 在点 <span class="math inline">\(A(2,0.5)\)</span> 处的切线斜率</h2>
+<ul>
+<li>记 <span class="math inline">\(A\)</span> 点附近的 <span class="math inline">\(B\)</span> 点坐标为 <span class="math inline">\((2+\Delta x,f(2+\Delta x))\)</span></li>
+<li>割线 <span class="math inline">\(AB\)</span> 的斜率为 <span class="math display">\[
+\frac{f(2+\Delta x)-f(2)}{2+\Delta x-2}=\frac{\frac{1}{8}(2+\Delta x)^2-\frac{1}{8}2^2}{\Delta x}=\frac{1}{8}\frac{4+4\Delta x+\Delta x^2-4}{\Delta x}=\frac{1}{2}+\frac{1}{8}\Delta x
+\]</span></li>
+</ul>
+<p>当 <span class="math inline">\(\Delta x\rightarrow 0\)</span> 时，割线的斜率越近于 <span class="math inline">\(\frac{1}{2}\)</span>，故 <span class="math inline">\(f'(2)=\frac{1}{2}\)</span></p>
+</section>
+<section id="示例fxfrac18x2-在任意点-axfx-处的切线斜率" class="slide level2">
+<h2>示例：<span class="math inline">\(f(x)=\frac{1}{8}x^2\)</span> 在任意点 <span class="math inline">\(A(x,f(x))\)</span> 处的切线斜率</h2>
+<ul>
+<li>记 <span class="math inline">\(A\)</span> 点附近的 <span class="math inline">\(B\)</span> 点坐标为 <span class="math inline">\((x+\Delta x,f(x+\Delta x))\)</span></li>
+<li>割线 <span class="math inline">\(AB\)</span> 的斜率为 <span class="math display">\[
+\frac{f(x+\Delta x)-f(x)}{x+\Delta x-x}=\frac{\frac{1}{8}(x+\Delta x)^2-\frac{1}{8}x^2}{\Delta x}=\frac{1}{8}\frac{x^2+2x\Delta x+\Delta x^2-x^2}{\Delta x}=\frac{1}{4}x+\frac{1}{8}\Delta x
+\]</span></li>
+</ul>
+<p><span class="math inline">\(\Delta x\rightarrow 0\)</span> 时，割线的斜率越近于 <span class="math inline">\(\frac{1}{4}x\)</span>，故 <span class="math inline">\(f'(x)=\frac{1}{4}x\)</span></p>
+</section>
 <section id="练习-1" class="slide level2">
 <h2>练习</h2>
 <ul>
@@ -579,7 +599,7 @@ L(k;T)&amp;=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4
 </ul>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="dc6734fd" class="cell" data-execution_count="4">
+<div id="cddf5bd7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -590,7 +610,7 @@ L(k;T)&amp;=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4
 </div>
 </div><div class="column" style="width:40%;">
 <div id="tbl-planets" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="29">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="61">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -780,7 +800,7 @@ L(k;T)&amp;=\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)\\&amp;
 <span id="cb7-22"><a></a>ax.scatter(x,y)</span>
 <span id="cb7-23"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div id="8c35f928" class="cell" data-execution_count="6">
+<div id="866696e7" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>斜率 10.114737008812858</code></pre>
 </div>
@@ -851,7 +871,7 @@ $$
 :::: {.columns}
 ::: {.column width="60%"}
 
-::: {#cc2024e6 .cell execution_count=7}
+::: {#4669184d .cell execution_count=7}
 
 ::: {.cell-output .cell-output-display}
 ![](Lec1_files/figure-revealjs/cell-8-output-1.png){width=972 height=750}
@@ -918,7 +938,7 @@ print("the best x,y and f(x,y):",x,y,f(x,y)) # 输出最后的x,f(x)
 <!-- ## 如果是$y=kx+b$呢？
 
 
-```ghekg
+```voiti
 function g(currentSlope1,currentSlope2,t) {
   
 // 数据部分
@@ -1030,7 +1050,7 @@ const plot2 = Plot.plot({
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="763" source-offset="0"}
+```{.js .cell-code .hidden startFrom="783" source-offset="0"}
 g(currentSlope1,currentSlope2,1)
 ```
 
@@ -1050,7 +1070,7 @@ g(currentSlope1,currentSlope2,1)
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="870" source-offset="0"}
+```{.js .cell-code .hidden startFrom="890" source-offset="0"}
 g(currentSlope1,currentSlope2,2)
 ```
 
@@ -1072,7 +1092,7 @@ g(currentSlope1,currentSlope2,2)
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="876" source-offset="0"}
+```{.js .cell-code .hidden startFrom="896" source-offset="0"}
 viewof currentSlope1 = Inputs.range([-2, 5], {
   label: "调整1斜率参数 (w)",
   step: 0.1,
@@ -1095,7 +1115,7 @@ viewof currentSlope1 = Inputs.range([-2, 5], {
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="884" source-offset="0"}
+```{.js .cell-code .hidden startFrom="904" source-offset="0"}
 viewof currentSlope2 = Inputs.range([-2, 5], {
   label: "调整截距参数 (w)",
   step: 0.1,
@@ -1145,7 +1165,7 @@ $$J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2$$
 
 ### 生成示例数据
 
-::: {#51f3a725 .cell execution_count=8}
+::: {#95ed118c .cell execution_count=8}
 
 ::: {.cell-output .cell-output-display}
 ![](Lec1_files/figure-revealjs/cell-9-output-1.png){width=808 height=429}
