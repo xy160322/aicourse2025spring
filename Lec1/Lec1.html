@@ -216,7 +216,7 @@
 <h2>例：北京某小区房价数据</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="4cf0608d" class="cell" data-execution_count="1">
+<div id="7326eaec" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -227,7 +227,7 @@
 </div>
 </div><div class="column" style="width:30%;">
 <div id="tbl-planet-measures" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="58">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="29">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -310,7 +310,7 @@ Speaker notes go here.
 <li>问题：给定一组住房成交数据，每条数据有一个属性（面积 <span class="math inline">\(area\)</span> ），一个标签（价格 <span class="math inline">\(price\)</span> ），建立模型，能够实现给定一个新挂牌的房子的面积，预测它的成交价</li>
 <li>假设：所有<span class="math inline">\((area,price)\)</span>点在同一条直线附近</li>
 </ul>
-<div id="e89cb8a4" class="cell" data-execution_count="3">
+<div id="0aeff647" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -590,112 +590,86 @@ L(k;T)&amp;=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4
 <li>损失函数: <span class="math inline">\(L(k;T)=\frac{1}{4}(30k^2-56k+30)\)</span></li>
 <li>方法2：导数法。<span class="math inline">\(L(k)\)</span> 的导数 <span class="math inline">\(L'(k)=15k-14\)</span>，令 <span class="math inline">\(L'(k)=0\)</span>，解得 <span class="math inline">\(k^*=\frac{14}{15}  \approx 0.933\)</span>。由于 <span class="math inline">\(L(k)\)</span> 良好的性质，导数为 <span class="math inline">\(0\)</span> 的点很容易求得，并且在导数为 <span class="math inline">\(0\)</span> 的点取得最小值</li>
 </ul>
-</section>
-<section id="梯度下降法" class="slide level2">
-<h2>梯度下降法</h2>
-<ul>
-<li>解析法（配方法）和导数法有局限性，有时损失函数 <span class="math inline">\(L\)</span> 不容易直接求得最值点，或者 <span class="math inline">\(L'\)</span> 不容易求得零点</li>
-<li>梯度下降法：从某一个选定的点出发，沿着梯度（导数）方向移动点，不断接近极值点的数值算法（有误差，但可控）。它是机器学习甚至更广泛领域常见的优化方法。</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div id="cddf5bd7" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="Lec1_files/figure-revealjs/cell-5-output-1.png" width="1310" height="485"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<div id="tbl-planets" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="61">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Points</th>
-<th style="text-align: right;">x</th>
-<th style="text-align: right;">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">-2</td>
-<td style="text-align: right;">65.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">P2</td>
-<td style="text-align: right;">-0.24</td>
-<td style="text-align: right;">11.292</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">P3</td>
-<td style="text-align: right;">0.464</td>
-<td style="text-align: right;">2.61872</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">P4</td>
-<td style="text-align: right;">0.7456</td>
-<td style="text-align: right;">1.231</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">P5</td>
-<td style="text-align: right;">0.85824</td>
-<td style="text-align: right;">1.00896</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">P6</td>
-<td style="text-align: right;">0.903296</td>
-<td style="text-align: right;">0.973433</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">P7</td>
-<td style="text-align: right;">0.921318</td>
-<td style="text-align: right;">0.967749</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div></div>
-</section>
-<section id="梯度下降法-1" class="slide level2">
-<h2>梯度下降法</h2>
-<ul>
-<li>考虑从一个点 <span class="math inline">\(x_0\)</span> 开始逐步向最值点移动，最终能够到达（或无限接近）最值点
-<ul>
-<li>选哪个点作为起点 <span class="math inline">\(x_0\)</span> ？任意点？</li>
-<li>每次步长如何确定？<span class="math display">\[ x_{k+1}=x_k-\alpha f'(x_k) \]</span></li>
-<li>算法为什么是正确的？</li>
-</ul></li>
-<li>秘诀：切线指方向，导数定步长</li>
-<li>见house.xlsx演示</li>
-</ul>
-</section>
-<section id="梯度下降法收敛性证明" class="slide level2">
-<h2>梯度下降法收敛性证明</h2>
-<p>以 <span class="math inline">\(f(x)=x^2\)</span> 为例，任选 <span class="math inline">\(x_0\)</span> 为起点，更新规则 <span class="math inline">\(x_{k+1}=x_k-\alpha f'(x_k)(0\leqslant \alpha&lt;\frac 1 2)\)</span>，随着<span class="math inline">\(k\)</span>的增大，<span class="math inline">\(f(x_k)\rightarrow f(x^*)\)</span>，其中 <span class="math inline">\(x^*\)</span> 为 <span class="math inline">\(f(x)\)</span> 取得最小值的点</p>
-<ul>
-<li>由梯度下降更新公式：<span class="math inline">\(x_{k+1}=x_k-\alpha f'(x_k) =x_k-2\alpha  x_k=x_k (1-2 \alpha )\)</span></li>
-<li><span class="math inline">\(x_k =x_{k-1}(1-2\alpha)=x_{k-2}(1-2\alpha)^2=x_{k-3}(1-2\alpha)^3=...=x_{0}(1-2\alpha)^k\)</span></li>
-<li>由 <span class="math inline">\(f(x)\)</span>的凸性，<span class="math inline">\(\forall a,b\)</span>，<span class="math inline">\(f(b)\geq f(a)+f'(a)(b-a)\)</span>（可将 <span class="math inline">\(f(x)=x^2\)</span> 代入验证），取 <span class="math inline">\(b=x^{*},a=x_k\)</span>，则有 <span class="math display">\[\begin{align}
-f(x_k)- f(x^{*})&amp;\leqslant f'(x_k)(x_k-x^{*})\\
-&amp;=2x_k(x_k-x^*)\\
-&amp;=2\left((x_k-\frac{1}{2} x^*)^2-\frac{1}{4} (x^*)^2\right)
+<!-- ## 梯度下降法
+- 解析法（配方法）和导数法有局限性，有时损失函数 $L$ 不容易直接求得最值点，或者 $L'$ 不容易求得零点
+- 梯度下降法：从某一个选定的点出发，沿着梯度（导数）方向移动点，不断接近极值点的数值算法（有误差，但可控）。它是机器学习甚至更广泛领域常见的优化方法。
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {#8caaaa81 .cell execution_count=4}
+
+::: {.cell-output .cell-output-display}
+![](Lec1_files/figure-revealjs/cell-5-output-1.png){width=1310 height=485}
+:::
+:::
+
+
+:::
+
+::: {.column width="40%"}
+
+::: {#tbl-planets .cell execution_count=5}
+
+::: {.cell-output .cell-output-display .cell-output-markdown execution_count=32}
+Points            x          y
+--------  ---------  ---------
+P1        -2         65.5
+P2        -0.24      11.292
+P3         0.464      2.61872
+P4         0.7456     1.231
+P5         0.85824    1.00896
+P6         0.903296   0.973433
+P7         0.921318   0.967749
+:::
+:::
+
+
+:::
+
+::::
+
+---
+
+## 梯度下降法
+- 考虑从一个点 $x_0$ 开始逐步向最值点移动，最终能够到达（或无限接近）最值点
+    - 选哪个点作为起点 $x_0$ ？任意点？
+    - 每次步长如何确定？$$ x_{k+1}=x_k-\alpha f'(x_k) $$
+    - 算法为什么是正确的？
+- 秘诀：切线指方向，导数定步长
+- 见house.xlsx演示
+
+
+
+
+
+---
+
+## 梯度下降法收敛性证明
+以 $f(x)=x^2$ 为例，任选 $x_0$ 为起点，更新规则 $x_{k+1}=x_k-\alpha f'(x_k)(0\leqslant \alpha<\frac 1 2)$，随着$k$的增大，$f(x_k)\rightarrow f(x^*)$，其中 $x^*$ 为 $f(x)$ 取得最小值的点
+
+- 由梯度下降更新公式：$x_{k+1}=x_k-\alpha f'(x_k) =x_k-2\alpha  x_k=x_k (1-2 \alpha )$
+- $x_k =x_{k-1}(1-2\alpha)=x_{k-2}(1-2\alpha)^2=x_{k-3}(1-2\alpha)^3=...=x_{0}(1-2\alpha)^k$
+- 由 $f(x)$的凸性，$\forall a,b$，$f(b)\geq f(a)+f'(a)(b-a)$（可将 $f(x)=x^2$ 代入验证），取 $b=x^{*},a=x_k$，则有 
+$$\begin{align}
+f(x_k)- f(x^{*})&\leqslant f'(x_k)(x_k-x^{*})\\
+&=2x_k(x_k-x^*)\\
+&=2\left((x_k-\frac{1}{2} x^*)^2-\frac{1}{4} (x^*)^2\right)
 \end{align}
-\]</span></li>
-<li>随着 <span class="math inline">\(k\)</span> 的增大，由于 <span class="math inline">\(0\leqslant (1-2\alpha)&lt;1\)</span>，所以当 <span class="math inline">\(x_k\rightarrow 0\)</span> 时，<span class="math inline">\(2\left((x_k-\frac{1}{2} x^*)^2-\frac{1}{4} (x^*)^2\right)\rightarrow 0\)</span>，而 <span class="math inline">\(f(x_k)-f(x^*) \geqslant 0\)</span>，所以 <span class="math inline">\(f(x_k)\rightarrow f(x^*)\)</span></li>
-</ul>
-</section>
-<section id="练习-2" class="slide level2">
-<h2>练习</h2>
-<p>使用梯度下降方法计算 <span class="math inline">\(f(x)=2x^2+3x-4\)</span> 的最值，任选 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(x_0\)</span>，并与配方法和导数法得到的结果进行比较</p>
-</section>
-<section id="思考题" class="slide level2">
-<h2>思考题</h2>
-<p>以 <span class="math inline">\(f(x)=ax^2+bx+c(a&gt;0)\)</span> 为例，任选 <span class="math inline">\(x_0\)</span> 为起点，更新规则 <span class="math inline">\(x_{k+1}=x_k-\alpha f'(x_k)(0\leqslant \alpha&lt;\frac{1}{2a})\)</span>，请证明：随着 <span class="math inline">\(k\)</span> 的增大，<span class="math inline">\(f(x_k)\rightarrow f(x^*)\)</span>，其中 <span class="math inline">\(x^*\)</span> 为 <span class="math inline">\(f(x)\)</span> 取得最小值的点</p>
+$$
+- 随着 $k$ 的增大，由于 $0\leqslant (1-2\alpha)<1$，所以当 $x_k\rightarrow 0$ 时，$2\left((x_k-\frac{1}{2} x^*)^2-\frac{1}{4} (x^*)^2\right)\rightarrow 0$，而 $f(x_k)-f(x^*) \geqslant 0$，所以 $f(x_k)\rightarrow f(x^*)$
+
+---
+
+## 练习
+使用梯度下降方法计算 $f(x)=2x^2+3x-4$ 的最值，任选 $\alpha$ 和 $x_0$，并与配方法和导数法得到的结果进行比较
+
+## 思考题
+以 $f(x)=ax^2+bx+c(a>0)$ 为例，任选 $x_0$ 为起点，更新规则 $x_{k+1}=x_k-\alpha f'(x_k)(0\leqslant \alpha<\frac{1}{2a})$，请证明：随着 $k$ 的增大，$f(x_k)\rightarrow f(x^*)$，其中 $x^*$ 为 $f(x)$ 取得最小值的点
+
+
+ -->
 </section>
 <section id="动手计算" class="slide level2">
 <h2>动手计算</h2>
@@ -719,7 +693,7 @@ L(k;T)&amp;=\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)\\&amp;
 </ul></li>
 <li>方法三：python
 <ul>
-<li>编程模拟计算过程：解析法和导数法；梯度下降法</li>
+<li>编程模拟计算过程：解析法和导数法；<del>梯度下降法</del></li>
 <li>调用现成的工具（如sklearn）</li>
 </ul></li>
 </ul>
@@ -748,59 +722,65 @@ L(k;T)&amp;=\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)\\&amp;
 <li>在右侧弹出的“设置趋势线格式”中勾选“设置截距”和“显示公式”</li>
 </ul>
 
+<!-- ## python实现梯度下降
+- 以计算 $f(x)=\frac{1}{4}(30k^2-56k+30)$ 的最小值为例
+- 代码中`#`及之后的内容是注释，不会被运行
+- `a=b`是一个动作，可以不严谨地理解为把`b`代表的内容“传递”给`a`，即 $a\leftarrow b$
+
+```python
+def f(x): # 定义f(x)的计算方法
+    return (30*x*x-56*x+30)/4
+
+def ff(x): # 定义f'(x)的计算方法
+    return (60*x-56)/4
+
+x=-2 # x0=-2
+alpha=0.04
+for i in range(1,10+1):
+    # 将下一行的注释取消，可以输出每一步的计算过程
+    # print(f"x{i-1}={x:.3f}, f'(x{i-1})=2*{x:.3f}+4={ff(x):.3f}; x{i}=x{i-1}-alpha*f'(x{i-1})={x:.3f}-{alpha}*{ff(x):.3f}={x-alpha*ff(x):.3f}")
+    x=x-alpha*ff(x) # 计算下一个点
+
+print(x) # 输出最后的x
+print(f(x)) # 输出最后的f(x)
+``` -->
 <img data-src="excel2.png" class="quarto-figure quarto-figure-center r-stretch" style="border: 1px solid black;"></section>
-<section id="python实现梯度下降" class="slide level2">
-<h2>python实现梯度下降</h2>
+<section id="python实现线性回归解析法或导数法" class="slide level2">
+<h2>python实现线性回归——解析法或导数法</h2>
 <ul>
-<li>以计算 <span class="math inline">\(f(x)=\frac{1}{4}(30k^2-56k+30)\)</span> 的最小值为例</li>
-<li>代码中<code>#</code>及之后的内容是注释，不会被运行</li>
-<li><code>a=b</code>是一个动作，可以不严谨地理解为把<code>b</code>代表的内容“传递”给<code>a</code>，即 <span class="math inline">\(a\leftarrow b\)</span></li>
+<li>本质是整理损失函数的系数，再使用 <span class="math inline">\(k^*=-\frac{b}{2a}\)</span></li>
+<li>此处略去python实现</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> f(x): <span class="co"># 定义f(x)的计算方法</span></span>
-<span id="cb6-2"><a></a>    <span class="cf">return</span> (<span class="dv">30</span><span class="op">*</span>x<span class="op">*</span>x<span class="op">-</span><span class="dv">56</span><span class="op">*</span>x<span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">4</span></span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="kw">def</span> ff(x): <span class="co"># 定义f'(x)的计算方法</span></span>
-<span id="cb6-5"><a></a>    <span class="cf">return</span> (<span class="dv">60</span><span class="op">*</span>x<span class="op">-</span><span class="dv">56</span>)<span class="op">/</span><span class="dv">4</span></span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>x<span class="op">=-</span><span class="dv">2</span> <span class="co"># x0=-2</span></span>
-<span id="cb6-8"><a></a>alpha<span class="op">=</span><span class="fl">0.04</span></span>
-<span id="cb6-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span><span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb6-10"><a></a>    <span class="co"># 将下一行的注释取消，可以输出每一步的计算过程</span></span>
-<span id="cb6-11"><a></a>    <span class="co"># print(f"x{i-1}={x:.3f}, f'(x{i-1})=2*{x:.3f}+4={ff(x):.3f}; x{i}=x{i-1}-alpha*f'(x{i-1})={x:.3f}-{alpha}*{ff(x):.3f}={x-alpha*ff(x):.3f}")</span></span>
-<span id="cb6-12"><a></a>    x<span class="op">=</span>x<span class="op">-</span>alpha<span class="op">*</span>ff(x) <span class="co"># 计算下一个点</span></span>
-<span id="cb6-13"><a></a></span>
-<span id="cb6-14"><a></a><span class="bu">print</span>(x) <span class="co"># 输出最后的x</span></span>
-<span id="cb6-15"><a></a><span class="bu">print</span>(f(x)) <span class="co"># 输出最后的f(x)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="python实现线性回归" class="slide level2">
-<h2>python实现线性回归</h2>
+<section id="python实现线性回归调用现成的sklearn库" class="slide level2">
+<h2>python实现线性回归——调用现成的sklearn库</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb7-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-4"><a></a>df<span class="op">=</span>pd.read_csv(<span class="st">"house.csv"</span>)  <span class="co"># house.csv是数据源</span></span>
-<span id="cb7-5"><a></a>x<span class="op">=</span>df[[<span class="st">"area"</span>]] <span class="co"># area指明x列标题</span></span>
-<span id="cb7-6"><a></a>y<span class="op">=</span>df[<span class="st">"price"</span>] <span class="co"># price指明y列标题</span></span>
-<span id="cb7-7"><a></a>model<span class="op">=</span>LinearRegression(fit_intercept<span class="op">=</span><span class="va">False</span>) <span class="co"># 调用线性回归模型，且设置截距b=0</span></span>
-<span id="cb7-8"><a></a>model.fit(x,y) <span class="co"># 用把数据传递模型</span></span>
-<span id="cb7-9"><a></a>k<span class="op">=</span>model.coef_ <span class="co"># 获取斜率结果</span></span>
-<span id="cb7-10"><a></a><span class="bu">print</span>(<span class="st">"斜率"</span>,model.coef_[<span class="dv">0</span>])</span>
-<span id="cb7-11"><a></a></span>
-<span id="cb7-12"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-13"><a></a><span class="kw">def</span> f(x):</span>
-<span id="cb7-14"><a></a>    <span class="cf">return</span> k<span class="op">*</span>x</span>
-<span id="cb7-15"><a></a>fig<span class="op">=</span>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">9</span>))</span>
-<span id="cb7-16"><a></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>)</span>
-<span id="cb7-17"><a></a>x<span class="op">=</span>np.arange(<span class="bu">min</span>(x[<span class="st">"area"</span>]),<span class="bu">max</span>(x[<span class="st">"area"</span>]),<span class="fl">0.01</span>)</span>
-<span id="cb7-18"><a></a>y<span class="op">=</span>f(x)</span>
-<span id="cb7-19"><a></a>ax.plot(x,y)</span>
-<span id="cb7-20"><a></a>x<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"area"</span>])</span>
-<span id="cb7-21"><a></a>y<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"price"</span>])</span>
-<span id="cb7-22"><a></a>ax.scatter(x,y)</span>
-<span id="cb7-23"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb6-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-4"><a></a>df<span class="op">=</span>pd.read_csv(<span class="st">"house.csv"</span>)  <span class="co"># house.csv是数据源</span></span>
+<span id="cb6-5"><a></a>x<span class="op">=</span>df[[<span class="st">"area"</span>]] <span class="co"># area指明x列标题</span></span>
+<span id="cb6-6"><a></a>y<span class="op">=</span>df[<span class="st">"price"</span>] <span class="co"># price指明y列标题</span></span>
+<span id="cb6-7"><a></a>model<span class="op">=</span>LinearRegression(fit_intercept<span class="op">=</span><span class="va">False</span>) <span class="co"># 调用线性回归模型，且设置截距b=0</span></span>
+<span id="cb6-8"><a></a>model.fit(x,y) <span class="co"># 用把数据传递模型</span></span>
+<span id="cb6-9"><a></a>k<span class="op">=</span>model.coef_ <span class="co"># 获取斜率结果</span></span>
+<span id="cb6-10"><a></a><span class="bu">print</span>(<span class="st">"斜率"</span>,model.coef_[<span class="dv">0</span>])</span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-13"><a></a><span class="kw">def</span> f(x):</span>
+<span id="cb6-14"><a></a>    <span class="cf">return</span> k<span class="op">*</span>x</span>
+<span id="cb6-15"><a></a>fig<span class="op">=</span>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">9</span>))</span>
+<span id="cb6-16"><a></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>)</span>
+<span id="cb6-17"><a></a>x<span class="op">=</span>np.arange(<span class="bu">min</span>(x[<span class="st">"area"</span>]),<span class="bu">max</span>(x[<span class="st">"area"</span>]),<span class="fl">0.01</span>)</span>
+<span id="cb6-18"><a></a>y<span class="op">=</span>f(x)</span>
+<span id="cb6-19"><a></a>ax.plot(x,y)</span>
+<span id="cb6-20"><a></a>x<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"area"</span>])</span>
+<span id="cb6-21"><a></a>y<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"price"</span>])</span>
+<span id="cb6-22"><a></a>ax.scatter(x,y)</span>
+<span id="cb6-23"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div id="866696e7" class="cell" data-execution_count="6">
+<div id="9166c199" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>斜率 10.114737008812858</code></pre>
 </div>
@@ -813,65 +793,76 @@ L(k;T)&amp;=\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)\\&amp;
 </div>
 </div>
 </div></div>
-<!-- 
-# 四、双参数线性回归
+</section></section>
+<section>
+<section id="四双参数线性回归" class="title-slide slide level1 center">
+<h1>四、双参数线性回归</h1>
 
----
+</section>
+<section class="slide level2">
 
-- 训练集 $T=\{(1,2),(2,1),(3,4),(4,3)\}$， $m=4$
-- 决策函数：假设 $f(x)=kx+b$
-- 损失函数: 
-$$\begin{align}
-L(k,b;T)&=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4)^2)\\&=\frac{1}{4}((k+b-2)^2+(2k+b-1)^2+(3k+b-4)^2+(4k+b-3)^2)\\&=\frac{1}{4}(30 k^2+ 4 b^2+ 20  kb- 56 k - 20 b  +30   )
+<ul>
+<li>训练集 <span class="math inline">\(T=\{(1,2),(2,1),(3,4),(4,3)\}\)</span>， <span class="math inline">\(m=4\)</span></li>
+<li>决策函数：假设 <span class="math inline">\(f(x)=kx+b\)</span></li>
+<li>损失函数: <span class="math display">\[\begin{align}
+L(k,b;T)&amp;=\frac{1}{4}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+(f(x_3)-y_3)^2+(f(x_4)-y_4)^2)\\&amp;=\frac{1}{4}((k+b-2)^2+(2k+b-1)^2+(3k+b-4)^2+(4k+b-3)^2)\\&amp;=\frac{1}{4}(30 k^2+ 4 b^2+ 20  kb- 56 k - 20 b  +30   )
 \end{align}
-$$
-- 二元二次函数 $f(x,y)=\frac{1}{4}(30 x^2+ 4 y^2+ 20xy- 56x - 20y  +30   )$ 最值问题
-    - 配方法
-    - 导数法
-    - 梯度下降法
-
----
-
-## 配方法
-$$\begin{align}
-f(x,y)&=\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)\\&=\frac{1}{4}((5x+2y-5)^2+5x^2-6x+5)
+\]</span></li>
+<li>二元二次函数 <span class="math inline">\(f(x,y)=\frac{1}{4}(30 x^2+ 4 y^2+ 20xy- 56x - 20y  +30   )\)</span> 最值问题
+<ul>
+<li>配方法</li>
+<li>导数法</li>
+<li>梯度下降法</li>
+</ul></li>
+</ul>
+</section>
+<section id="配方法" class="slide level2">
+<h2>配方法</h2>
+<p><span class="math display">\[\begin{align}
+f(x,y)&amp;=\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)\\&amp;=\frac{1}{4}((5x+2y-5)^2+5x^2-6x+5)
 \end{align}
-$$
-
-- 当 $x=\frac{6}{10}$ 时，$5x^2-6x+5$ 取得最小值，$y=1$ 时，$(5x+2y-5)^2$ 可取到 $0$
-- 因此最小值点为 $(\frac{3}{5},1)$，最小值为 $\frac{4}{5}$
-
-## 练习
-- 用配方法求 $f(x,y)=\frac{1}{2} x^{2}+\frac{1}{4} y^{2}+\frac{1}{4}x y-2 x-y+3$ 的最小值
-
-## 导数法
-认识 $f(x,y)=\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)$图像
-<iframe scrolling="no" title="Lec1_3" src="https://www.geogebra.org/material/iframe/id/vuxaqaju/width/1440/height/724/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/true/ld/true/sdz/true/ctl/false" width="1440px" height="724px" style="border:0px;"> </iframe>
-
----
-
-## 导数法
-
-<iframe scrolling="no" title="Lec_4" src="https://www.geogebra.org/material/iframe/id/ex7bmepf/width/1440/height/724/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/true/ld/true/sdz/true/ctl/false" width="1440px" height="724px" style="border:0px;"> </iframe>
-
-## 导数法
-- 在已知 $y$ 的情况下，$f(x,y)$ 可以看作以 $x$ 为自变量的一元二次函数 $f(x;y)$，因此 $f(x;y)$ 有关于 $x$ 的导数（或在 $x$ 方向的切线），记为 $f'(x;y)$（或 $f_x(x,y)$、$\frac{\partial f}{\partial x}$）
-
-- 在已知 $x$ 的情况下，类似地，有$f'(y;x)$（或 $f_y(x,y)$、$\frac{\partial f}{\partial y}$）
-
-- 对于 $f(x,y)=\frac{1}{4}(30 x^2+ 4 y^2+ 20xy- 56x - 20y  +30   )$
-    - $f_x(x,y)=\frac{1}{4}(60x+20y-56)$
-    - $f_y(x,y)=\frac{1}{4}(8y+20x-20)$
-    - 令 $f_x(x,y)=0$且$f_y(x,y)=0$，得到 $x=\frac{3}{5},y=1$
-
-## 练习
-用导数法求 $f(x,y)=\frac{1}{2} x^{2}+\frac{1}{4} y^{2}+\frac{1}{4}x y-2 x-y+3$ 的最小值
-
-## 梯度下降法 
+\]</span></p>
+<ul>
+<li>当 <span class="math inline">\(x=\frac{6}{10}\)</span> 时，<span class="math inline">\(5x^2-6x+5\)</span> 取得最小值，<span class="math inline">\(y=1\)</span> 时，<span class="math inline">\((5x+2y-5)^2\)</span> 可取到 <span class="math inline">\(0\)</span></li>
+<li>因此最小值点为 <span class="math inline">\((\frac{3}{5},1)\)</span>，最小值为 <span class="math inline">\(\frac{4}{5}\)</span></li>
+</ul>
+</section>
+<section id="练习-2" class="slide level2">
+<h2>练习</h2>
+<ul>
+<li>用配方法求 <span class="math inline">\(f(x,y)=\frac{1}{2} x^{2}+\frac{1}{4} y^{2}+\frac{1}{4}x y-2 x-y+3\)</span> 的最小值</li>
+</ul>
+</section>
+<section id="导数法" class="slide level2">
+<h2>导数法</h2>
+<p>认识 <span class="math inline">\(f(x,y)=\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)\)</span>图像 <iframe scrolling="no" title="Lec1_3" src="https://www.geogebra.org/material/iframe/id/vuxaqaju/width/1440/height/724/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/true/ld/true/sdz/true/ctl/false" width="1440px" height="724px" style="border:0px;"> </iframe></p>
+</section>
+<section id="导数法-1" class="slide level2">
+<h2>导数法</h2>
+<iframe scrolling="no" title="Lec_4" src="https://www.geogebra.org/material/iframe/id/ex7bmepf/width/1440/height/724/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/true/ld/true/sdz/true/ctl/false" width="1440px" height="724px" style="border:0px;">
+</iframe>
+</section>
+<section id="导数法-2" class="slide level2">
+<h2>导数法</h2>
+<ul>
+<li><p>在已知 <span class="math inline">\(y\)</span> 的情况下，<span class="math inline">\(f(x,y)\)</span> 可以看作以 <span class="math inline">\(x\)</span> 为自变量的一元二次函数 <span class="math inline">\(f(x;y)\)</span>，因此 <span class="math inline">\(f(x;y)\)</span> 有关于 <span class="math inline">\(x\)</span> 的导数（或在 <span class="math inline">\(x\)</span> 方向的切线），记为 <span class="math inline">\(f'(x;y)\)</span>（或 <span class="math inline">\(f_x(x,y)\)</span>、<span class="math inline">\(\frac{\partial f}{\partial x}\)</span>）</p></li>
+<li><p>在已知 <span class="math inline">\(x\)</span> 的情况下，类似地，有<span class="math inline">\(f'(y;x)\)</span>（或 <span class="math inline">\(f_y(x,y)\)</span>、<span class="math inline">\(\frac{\partial f}{\partial y}\)</span>）</p></li>
+<li><p>对于 <span class="math inline">\(f(x,y)=\frac{1}{4}(30 x^2+ 4 y^2+ 20xy- 56x - 20y  +30   )\)</span></p>
+<ul>
+<li><span class="math inline">\(f_x(x,y)=\frac{1}{4}(60x+20y-56)\)</span></li>
+<li><span class="math inline">\(f_y(x,y)=\frac{1}{4}(8y+20x-20)\)</span></li>
+<li>令 <span class="math inline">\(f_x(x,y)=0\)</span>且<span class="math inline">\(f_y(x,y)=0\)</span>，得到 <span class="math inline">\(x=\frac{3}{5},y=1\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="练习-3" class="slide level2">
+<h2>练习</h2>
+<p>用导数法求 <span class="math inline">\(f(x,y)=\frac{1}{2} x^{2}+\frac{1}{4} y^{2}+\frac{1}{4}x y-2 x-y+3\)</span> 的最小值</p>
+<!-- ## 梯度下降法 
 :::: {.columns}
 ::: {.column width="60%"}
 
-::: {#4669184d .cell execution_count=7}
+::: {#c558e4b9 .cell execution_count=7}
 
 ::: {.cell-output .cell-output-display}
 ![](Lec1_files/figure-revealjs/cell-8-output-1.png){width=972 height=750}
@@ -892,28 +883,81 @@ $$
 -  可以证明，双参数线性回归损失函数在选取合适的 $\alpha$ 时，可以收敛到最小值
 - 更一般地，二元二次函数$f(x,y)$满足一定的条件（凸性、可微与Lipschitz连续性）时，梯度下降可以收敛最小值
 :::
-::::
-
-## 动手计算
-
-- $L(k,b;T) =  (\sum_{i=1}^{m} x_i^2)k^2 + mb^2+ 2( \sum_{i=1}^{m} x_i)k b - 2 (\sum_{i=1}^{m}x_i y_i)k- 2 (\sum_{i=1}^{m} y_i)b  +\sum_{i=1}^{m} y_i^2$
-- 记 $A=\sum x_i^2,B=\sum x_i,C=\sum y_i,D=\sum x_iy_i,E=\sum y_i^2,\bar{x}=\frac{B}{m}=\frac{\sum x_i}{m},\bar{y}=\frac{C}{m}=\frac{\sum y_i}{m}$
-- $L(k,b;T) =Ak^2+mb^2+2Bkb-2Dk-2Cb+E$，先对 $b$ 项配方，再对 $k$ 项配方，得
-    - $L(k,b;T)=m(b+\frac{Bk-C}{m})^2+(\frac{mA-B^2}{m})(k+\frac{BC-Dm}{mA-B^2})^2+\text{常数项}$
-    - $k^*=\frac{Dm-BC}{mA-B^2}=\frac{\sum x_iy_i-m\bar{x}\bar{y}}{\sum x_i^2-m\bar{x}^2},b^*=\bar{y}-\bar{x}k$
-- $L_k(k,b;T)=2Ak+2Bb-2D=2(Ak+Bb-D)$
-- $L_b(k,b;T)=2mb+2Bk-2C=2(Bk+mb-C)$
-
-## 动手计算
-- 方法一：手动计算（只要有足够的时间和耐心）
-- 方法二：Excel
-    - 借助公式辅助手动计算（略）
-    - 调用公式（FALSE改为TRUE）；使用散点图（不设置截距）
-- 方法三：python
-    - 编程模拟计算过程：解析法和导数法；梯度下降法
-    - 调用现成的工具（如sklearn，`fit_intercept=True`）
-
-## python实现梯度下降法
+:::: -->
+</section>
+<section id="动手计算-2" class="slide level2">
+<h2>动手计算</h2>
+<ul>
+<li><span class="math inline">\(L(k,b;T) =  (\sum_{i=1}^{m} x_i^2)k^2 + mb^2+ 2( \sum_{i=1}^{m} x_i)k b - 2 (\sum_{i=1}^{m}x_i y_i)k- 2 (\sum_{i=1}^{m} y_i)b  +\sum_{i=1}^{m} y_i^2\)</span></li>
+<li>记 <span class="math inline">\(A=\sum x_i^2,B=\sum x_i,C=\sum y_i,D=\sum x_iy_i,E=\sum y_i^2,\bar{x}=\frac{B}{m}=\frac{\sum x_i}{m},\bar{y}=\frac{C}{m}=\frac{\sum y_i}{m}\)</span></li>
+<li><span class="math inline">\(L(k,b;T) =Ak^2+mb^2+2Bkb-2Dk-2Cb+E\)</span>，先对 <span class="math inline">\(b\)</span> 项配方，再对 <span class="math inline">\(k\)</span> 项配方，得
+<ul>
+<li><span class="math inline">\(L(k,b;T)=m(b+\frac{Bk-C}{m})^2+(\frac{mA-B^2}{m})(k+\frac{BC-Dm}{mA-B^2})^2+\text{常数项}\)</span></li>
+<li><span class="math inline">\(k^*=\frac{Dm-BC}{mA-B^2}=\frac{\sum x_iy_i-m\bar{x}\bar{y}}{\sum x_i^2-m\bar{x}^2},b^*=\bar{y}-\bar{x}k\)</span></li>
+</ul></li>
+<li><span class="math inline">\(L_k(k,b;T)=2Ak+2Bb-2D=2(Ak+Bb-D)\)</span></li>
+<li><span class="math inline">\(L_b(k,b;T)=2mb+2Bk-2C=2(Bk+mb-C)\)</span></li>
+</ul>
+</section>
+<section id="动手计算-3" class="slide level2">
+<h2>动手计算</h2>
+<ul>
+<li>方法一：手动计算（只要有足够的时间和耐心）</li>
+<li>方法二：Excel
+<ul>
+<li>借助公式辅助手动计算（略）</li>
+<li>调用公式（FALSE改为TRUE）；使用散点图（不设置截距）</li>
+</ul></li>
+<li>方法三：python
+<ul>
+<li>编程模拟计算过程：解析法和导数法（略）；<del>梯度下降法</del></li>
+<li>调用现成的工具（如sklearn，<code>fit_intercept=True</code>）</li>
+</ul></li>
+</ul>
+</section>
+<section id="python实现线性回归调用现成的sklearn库-1" class="slide level2">
+<h2>python实现线性回归——调用现成的sklearn库</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb8-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-4"><a></a>df<span class="op">=</span>pd.read_csv(<span class="st">"house.csv"</span>)  <span class="co"># house.csv是数据源</span></span>
+<span id="cb8-5"><a></a>x<span class="op">=</span>df[[<span class="st">"area"</span>]] <span class="co"># area指明x列标题</span></span>
+<span id="cb8-6"><a></a>y<span class="op">=</span>df[<span class="st">"price"</span>] <span class="co"># price指明y列标题</span></span>
+<span id="cb8-7"><a></a>model<span class="op">=</span>LinearRegression(fit_intercept<span class="op">=</span><span class="va">True</span>) <span class="co"># 调用线性回归模型</span></span>
+<span id="cb8-8"><a></a>model.fit(x,y) <span class="co"># 用把数据传递模型</span></span>
+<span id="cb8-9"><a></a><span class="bu">print</span>(<span class="st">"斜率"</span>,model.coef_[<span class="dv">0</span>])</span>
+<span id="cb8-10"><a></a><span class="bu">print</span>(<span class="st">"截距"</span>,model.intercept_)</span>
+<span id="cb8-11"><a></a></span>
+<span id="cb8-12"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-13"><a></a><span class="kw">def</span> f(x):</span>
+<span id="cb8-14"><a></a>    <span class="cf">return</span> k<span class="op">*</span>x</span>
+<span id="cb8-15"><a></a>fig<span class="op">=</span>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">9</span>))</span>
+<span id="cb8-16"><a></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>)</span>
+<span id="cb8-17"><a></a>x<span class="op">=</span>np.arange(<span class="bu">min</span>(x[<span class="st">"area"</span>]),<span class="bu">max</span>(x[<span class="st">"area"</span>]),<span class="fl">0.01</span>)</span>
+<span id="cb8-18"><a></a>y<span class="op">=</span>f(x)</span>
+<span id="cb8-19"><a></a>ax.plot(x,y)</span>
+<span id="cb8-20"><a></a>x<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"area"</span>])</span>
+<span id="cb8-21"><a></a>y<span class="op">=</span><span class="bu">list</span>(df[<span class="st">"price"</span>])</span>
+<span id="cb8-22"><a></a>ax.scatter(x,y)</span>
+<span id="cb8-23"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div id="e8ad0067" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>斜率 8.886379927886498
+截距 73.98296736905706</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec1_files/figure-revealjs/cell-9-output-2.png" width="1170" height="485"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<!-- ## python实现梯度下降法
 以计算 $f(x,y)=\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)$ 最小值为例
 ```python
 import numpy as np
@@ -933,12 +977,11 @@ while True:
     x,y=x_,y_
 
 print("the best x,y and f(x,y):",x,y,f(x,y)) # 输出最后的x,f(x)
-
-``` -->
+```  -->
 <!-- ## 如果是$y=kx+b$呢？
 
 
-```voiti
+```oktoe
 function g(currentSlope1,currentSlope2,t) {
   
 // 数据部分
@@ -1050,7 +1093,7 @@ const plot2 = Plot.plot({
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="783" source-offset="0"}
+```{.js .cell-code .hidden startFrom="847" source-offset="0"}
 g(currentSlope1,currentSlope2,1)
 ```
 
@@ -1070,7 +1113,7 @@ g(currentSlope1,currentSlope2,1)
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="890" source-offset="0"}
+```{.js .cell-code .hidden startFrom="954" source-offset="0"}
 g(currentSlope1,currentSlope2,2)
 ```
 
@@ -1092,7 +1135,7 @@ g(currentSlope1,currentSlope2,2)
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="896" source-offset="0"}
+```{.js .cell-code .hidden startFrom="960" source-offset="0"}
 viewof currentSlope1 = Inputs.range([-2, 5], {
   label: "调整1斜率参数 (w)",
   step: 0.1,
@@ -1115,7 +1158,7 @@ viewof currentSlope1 = Inputs.range([-2, 5], {
 
 :::::{.cell}
 
-```{.js .cell-code .hidden startFrom="904" source-offset="0"}
+```{.js .cell-code .hidden startFrom="968" source-offset="0"}
 viewof currentSlope2 = Inputs.range([-2, 5], {
   label: "调整截距参数 (w)",
   step: 0.1,
@@ -1165,10 +1208,10 @@ $$J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2$$
 
 ### 生成示例数据
 
-::: {#95ed118c .cell execution_count=8}
+::: {#ff3d3484 .cell execution_count=9}
 
 ::: {.cell-output .cell-output-display}
-![](Lec1_files/figure-revealjs/cell-9-output-1.png){width=808 height=429}
+![](Lec1_files/figure-revealjs/cell-10-output-1.png){width=808 height=429}
 :::
 :::
 
