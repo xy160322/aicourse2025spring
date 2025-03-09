@@ -74,14 +74,14 @@
     "href": "Lec1.html#梯度下降法",
     "title": "0x01 线性回归",
     "section": "梯度下降法",
-    "text": "梯度下降法\n\n\n\n\n\n\n\n\n\n\n\n\n\n切线指方向，导数定步长\n任选 \\((x_0,y_0)\\) ，每次同时更新： \\[\n\\begin{cases}\nx_{k+1}=x_k-\\alpha f_x(x_k,y_k)\\\\\ny_{k+1}=y_k-\\alpha f_y(x_k,y_k)\n\\end{cases}\n\\]\n可以证明，双参数线性回归损失函数在选取合适的 \\(\\alpha\\) 时，可以收敛到最小值\n更一般地，二元二次函数\\(f(x,y)\\)满足一定的条件（凸性、可微与Lipschitz连续性）时，梯度下降可以收敛最小值"
+    "text": "梯度下降法\n\n解析法（配方法）和导数法有局限性，有时损失函数 \\(L\\) 不容易直接求得最值点，或者 \\(L'\\) 不容易求得零点\n梯度下降法：从某一个选定的点出发，沿着梯度（导数）方向移动点，不断接近极值点的数值算法（有误差，但可控）。它是机器学习甚至更广泛领域常见的优化方法。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPoints\nx\ny\n\n\n\n\nP1\n-2\n65.5\n\n\nP2\n-0.24\n11.292\n\n\nP3\n0.464\n2.61872\n\n\nP4\n0.7456\n1.231\n\n\nP5\n0.85824\n1.00896\n\n\nP6\n0.903296\n0.973433\n\n\nP7\n0.921318\n0.967749"
   },
   {
     "objectID": "Lec1.html#梯度下降法-1",
     "href": "Lec1.html#梯度下降法-1",
     "title": "0x01 线性回归",
     "section": "梯度下降法",
-    "text": "梯度下降法\n\n考虑从一个点 \\(x_0\\) 开始逐步向最值点移动，最终能够到达（或无限接近）最值点\n\n选哪个点作为起点 \\(x_0\\) ？任意点？\n每次步长如何确定？\\[ x_{k+1}=x_k-\\alpha f'(x_k) \\]\n算法为什么是正确的？\n\n秘诀：切线指方向，导数定步长\n见house.xlsx演示"
+    "text": "梯度下降法\n\n考虑从一个点 \\(x_0\\) 开始逐步向最值点移动，最终能够到达（或无限接近）最值点\n\n选哪个点作为起点 \\(x_0\\) ？“几乎”是任意点！\n每次步长如何确定？\\[ x_{k+1}=x_k-\\alpha f'(x_k) \\]\n算法为什么是正确的？\n\n秘诀：切线指方向，导数定步长"
   },
   {
     "objectID": "Lec1.html#梯度下降法收敛性证明",
@@ -95,7 +95,7 @@
     "href": "Lec1.html#练习-2",
     "title": "0x01 线性回归",
     "section": "练习",
-    "text": "练习\n\n用配方法求 \\(f(x,y)=\\frac{1}{2} x^{2}+\\frac{1}{4} y^{2}+\\frac{1}{4}x y-2 x-y+3\\) 的最小值"
+    "text": "练习\n使用梯度下降方法计算 \\(f(x)=2x^2+3x-4\\) 的最值，任选 \\(\\alpha\\) 和 \\(x_0\\)，并与配方法和导数法得到的结果进行比较"
   },
   {
     "objectID": "Lec1.html#思考题",
@@ -207,7 +207,7 @@
     "href": "Lec1.html#练习-3",
     "title": "0x01 线性回归",
     "section": "练习",
-    "text": "练习\n用导数法求 \\(f(x,y)=\\frac{1}{2} x^{2}+\\frac{1}{4} y^{2}+\\frac{1}{4}x y-2 x-y+3\\) 的最小值"
+    "text": "练习\n\n用配方法求 \\(f(x,y)=\\frac{1}{2} x^{2}+\\frac{1}{4} y^{2}+\\frac{1}{4}x y-2 x-y+3\\) 的最小值"
   },
   {
     "objectID": "Lec1.html#导数法",
@@ -242,7 +242,7 @@
     "href": "Lec1.html#梯度下降法-2",
     "title": "0x01 线性回归",
     "section": "梯度下降法",
-    "text": "梯度下降法\n\n\n\n\n\n\n\n\n\n\n\n\n\n切线指方向，导数定步长\n任选 \\((x_0,y_0)\\) ，每次同时更新： \\[\n\\begin{cases}\nx_{k+1}=x_k-\\alpha f_x(x_k,y_k)\\\\\ny_{k+1}=y_k-\\alpha f_y(x_k,y_k)\n\\end{cases}\n\\]\n可以证明，双参数线性回归损失函数在选取合适的 \\(\\alpha\\) 时，可以收敛到最小值\n更一般地，二元二次函数\\(f(x,y)\\)满足一定的条件（凸性、可微与Lipschitz连续性）时，梯度下降可以收敛最小值"
+    "text": "梯度下降法\n\n\n\n\n\n\n\n\n\n\n\n\n\n口诀：切线指方向，导数定步长\n任选 \\((x_0,y_0)\\) ，每次同时更新： \\[\n\\begin{cases}\nx_{k+1}=x_k-\\alpha f_x(x_k,y_k)\\\\\ny_{k+1}=y_k-\\alpha f_y(x_k,y_k)\n\\end{cases}\n\\]\n可以证明，双参数线性回归损失函数在选取合适的 \\(\\alpha\\) 时，可以收敛到最小值\n更一般地，二元二次函数\\(f(x,y)\\)满足一定的条件（凸性、可微与Lipschitz连续性）时，梯度下降可以收敛最小值"
   },
   {
     "objectID": "Lec1.html#动手计算-2",
@@ -263,7 +263,7 @@
     "href": "Lec1.html#python实现梯度下降法",
     "title": "0x01 线性回归",
     "section": "python实现梯度下降法",
-    "text": "python实现梯度下降法\n以计算 \\(f(x,y)=\\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)\\) 最小值为例\nimport numpy as np\ndef f(x,y):\n    return (30*x**2 +4* y**2+20*x*y-56*x-20*y+30)/4\ndef g(x,y): # f在x方向的偏导数\n    return (60*x+20*y-56)/4\ndef h(x,y): # f在y方向的偏导数\n    return (8*y+20*x-20)/4\n\nalpha=0.005 # 学习率\nx,y=1,4\nwhile True:\n    x_,y_=x-alpha*g(x,y),y-alpha*h(x,y)\n    if abs(f(x,y)-f(x_,y_))&lt;1e-7:\n        break\n    x,y=x_,y_\n\nprint(\"the best x,y and f(x,y):\",x,y,f(x,y)) # 输出最后的x,f(x)"
+    "text": "python实现梯度下降法\n以计算 \\(f(x,y)=\\frac{1}{4}(30x^2+4y^2+20xy-56x-20y+30)\\) 最小值为例\ndef f(x,y):\n    return (30*x**2 +4* y**2+20*x*y-56*x-20*y+30)/4\ndef g(x,y): # f在x方向的偏导数\n    return (60*x+20*y-56)/4\ndef h(x,y): # f在y方向的偏导数\n    return (8*y+20*x-20)/4\n\nalpha=0.005 # 学习率\nx,y=1,4\nfor i in range(1,cnt+1):\n    # 将下一行的注释取消，可以输出每一步的计算过程\n    # print(f\"x{i-1}={x:.3f},y{i-1}={y:.3f} ; x{i}={x-alpha*g(x,y):.3f},y{i}={y-alpha*h(x,y):.3f},f(x{i},y{i})={f(x-alpha*g(x,y),y-alpha*h(x,y)):.3f}\")\n    x_,y_=x-alpha*g(x,y),y-alpha*h(x,y)\nprint(\"the best x,y and f(x,y):\",x,y,f(x,y)) # 输出最后的x,f(x)"
   },
   {
     "objectID": "Lec1.html#python实现线性回归解析法或导数法",
@@ -285,5 +285,138 @@
     "title": "0x01 线性回归",
     "section": "python实现线性回归——调用现成的sklearn库",
     "text": "python实现线性回归——调用现成的sklearn库\n\n\nfrom sklearn.linear_model import LinearRegression\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf=pd.read_csv(\"house.csv\")  # house.csv是数据源\nx=df[[\"area\"]] # area指明x列标题\ny=df[\"price\"] # price指明y列标题\nmodel=LinearRegression(fit_intercept=True) # 调用线性回归模型\nmodel.fit(x,y) # 用把数据传递模型\nprint(\"斜率\",model.coef_[0])\nprint(\"截距\",model.intercept_)\n\nimport numpy as np\ndef f(x):\n    return k*x\nfig=plt.figure(figsize=(15,9))\nax = fig.add_subplot(111)\nx=np.arange(min(x[\"area\"]),max(x[\"area\"]),0.01)\ny=f(x)\nax.plot(x,y)\nx=list(df[\"area\"])\ny=list(df[\"price\"])\nax.scatter(x,y)\nplt.show()\n\n\n\n斜率 8.886379927886498\n截距 73.98296736905706"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降法计算实例",
+    "href": "Lec1.html#梯度下降法计算实例",
+    "title": "0x01 线性回归",
+    "section": "梯度下降法——计算实例",
+    "text": "梯度下降法——计算实例\n\\(f(x)=x^2+4x-1\\)，\\(f'(x)=2x+4\\)，\\(\\alpha=0.4\\)，\\(x_0=5\\) \\[\nx_0=\\ 5.000, f'(x_0)=14.000; x_1=x_0-\\alpha f'(x_0)=5.000-0.4\\times 14.000=-0.600\\\\\nx_1=-0.600, f'(x_1)=2.800; x_2=x_1-\\alpha f'(x_1)=-0.600-0.4\\times 2.800=-1.720\\\\\nx_2=-1.720, f'(x_2)=0.560; x_3=x_2-\\alpha f'(x_2)=-1.720-0.4\\times 0.560=-1.944\\\\\nx_3=-1.944, f'(x_3)=0.112; x_4=x_3-\\alpha f'(x_3)=-1.944-0.4\\times 0.112=-1.989\\\\\nx_4=-1.989, f'(x_4)=0.022; x_5=x_4-\\alpha f'(x_4)=-1.989-0.4\\times 0.022=-1.998\\\\\nx_5=-1.998, f'(x_5)=0.004; x_6=x_5-\\alpha f'(x_5)=-1.998-0.4\\times 0.004=-2.000\n\\]"
+  },
+  {
+    "objectID": "Lec1.html#盲人摸象",
+    "href": "Lec1.html#盲人摸象",
+    "title": "0x01 线性回归",
+    "section": "“盲人摸象”",
+    "text": "“盲人摸象”\n\nhttps://www.geogebra.org/classic/jdjne9bg\n等高线：https://jc.pep.com.cn/\n近似理解：https://www.geogebra.org/classic/xyptd2hw"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降的理解",
+    "href": "Lec1.html#梯度下降的理解",
+    "title": "0x01 线性回归",
+    "section": "梯度下降的理解",
+    "text": "梯度下降的理解\n\n“盲人摸象”：https://www.geogebra.org/classic/jdjne9bg\n等高线：https://jc.pep.com.cn/\n近似理解：https://www.geogebra.org/classic/xyptd2hw"
+  },
+  {
+    "objectID": "Lec1.html#盲人下山",
+    "href": "Lec1.html#盲人下山",
+    "title": "0x01 线性回归",
+    "section": "“盲人下山”",
+    "text": "“盲人下山”\n\nhttps://www.geogebra.org/classic/jdjne9bg"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降理解",
+    "href": "Lec1.html#梯度下降理解",
+    "title": "0x01 线性回归",
+    "section": "梯度下降理解",
+    "text": "梯度下降理解"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降理解-1",
+    "href": "Lec1.html#梯度下降理解-1",
+    "title": "0x01 线性回归",
+    "section": "梯度下降理解",
+    "text": "梯度下降理解\n\n数形结合\n\n什么是等高线：https://jc.pep.com.cn/\nhttps://www.geogebra.org/classic/jdjne9bg\n\n近似理解：https://www.geogebra.org/classic/xyptd2hw"
+  },
+  {
+    "objectID": "Lec1.html#下坡时的路线选择",
+    "href": "Lec1.html#下坡时的路线选择",
+    "title": "0x01 线性回归",
+    "section": "下坡时的路线选择",
+    "text": "下坡时的路线选择"
+  },
+  {
+    "objectID": "Lec1.html#fxy-在-x_0y_0-点的梯度是-f_xx_0y_0f_yx_0y_0",
+    "href": "Lec1.html#fxy-在-x_0y_0-点的梯度是-f_xx_0y_0f_yx_0y_0",
+    "title": "0x01 线性回归",
+    "section": "\\(f(x,y)\\) 在 \\((x_0,y_0)\\) 点的梯度是 \\(f_x(x_0,y_0):f_y(x_0,y_0)\\)",
+    "text": "\\(f(x,y)\\) 在 \\((x_0,y_0)\\) 点的梯度是 \\(f_x(x_0,y_0):f_y(x_0,y_0)\\)\n\n遇事不决先“近似”——斜坡近似：https://www.geogebra.org/classic/xyptd2hw\n下坡时的路线选择"
+  },
+  {
+    "objectID": "Lec1.html#梯度理解",
+    "href": "Lec1.html#梯度理解",
+    "title": "0x01 线性回归",
+    "section": "梯度理解",
+    "text": "梯度理解\n\n遇事不决先“近似”\n梯度首先是 \\(xy\\) 平面上的一个方向，什么是方向？\n\n可以看作是一个比例 \\(a:b\\)\n如果要从一个点 \\((x,y)\\) 出发沿着方向 \\(a:b\\) 走，那么只能走到 \\(x+ak,y+bk\\)，\\(k\\in R\\)\n\n梯度是函数值 \\(f(x,y)\\) 增长（趋势）最快的方向（反之，梯度的反方向就是 \\(f(x,y)\\) 下降（趋势）最快的方向）\n\n最快：“走”同样的路程，函数值上升（下降）的最多\n梯度的反方向的理解：下坡时的路线选择"
+  },
+  {
+    "objectID": "Lec1.html#斜坡近似",
+    "href": "Lec1.html#斜坡近似",
+    "title": "0x01 线性回归",
+    "section": "斜坡近似",
+    "text": "斜坡近似\n\n什么是等高线：https://jc.pep.com.cn/\nhttps://www.geogebra.org/classic/jdjne9bg\n斜坡近似：https://www.geogebra.org/classic/xyptd2hw"
+  },
+  {
+    "objectID": "Lec1.html#梯度",
+    "href": "Lec1.html#梯度",
+    "title": "0x01 线性回归",
+    "section": "梯度",
+    "text": "梯度\n\n梯度首先是 \\(xy\\) 平面上的一个方向，什么是方向？\n\n可以看作是一个比例 \\(a:b\\)（注：在高等数学中并非用此比例符号表示梯度）\n如果要从一个点 \\((x,y)\\) 出发水平方向沿着 \\(a:b\\) 走，那么只能走到 \\((x+ak,y+bk)\\)，\\(k\\in R\\)\n\n每个点都有一个相关的梯度\n梯度是这个点的函数值 \\(f(x,y)\\) 增长（趋势）最快的那个方向（反之，梯度的反方向就是 \\(f(x,y)\\) 下降（趋势）最快的方向）\n\n最快：“走”同样的路程，函数值上升（下降）的最多"
+  },
+  {
+    "objectID": "Lec1.html#梯度-1",
+    "href": "Lec1.html#梯度-1",
+    "title": "0x01 线性回归",
+    "section": "梯度",
+    "text": "梯度\n\n什么是等高线：https://jc.pep.com.cn/\n函数梯度示例：https://www.geogebra.org/classic/jdjne9bg"
+  },
+  {
+    "objectID": "Lec1.html#fxy-在-x_0y_0-点的梯度是-f_xx_0y_0f_yx_0y_0-1",
+    "href": "Lec1.html#fxy-在-x_0y_0-点的梯度是-f_xx_0y_0f_yx_0y_0-1",
+    "title": "0x01 线性回归",
+    "section": "\\(f(x,y)\\) 在 \\((x_0,y_0)\\) 点的梯度是 \\(f_x(x_0,y_0):f_y(x_0,y_0)\\)",
+    "text": "\\(f(x,y)\\) 在 \\((x_0,y_0)\\) 点的梯度是 \\(f_x(x_0,y_0):f_y(x_0,y_0)\\)\n\n斜坡近似+几何分析：https://www.geogebra.org/classic/xyptd2hw\n已画好的：https://www.geogebra.org/classic/hwv93xnf"
+  },
+  {
+    "objectID": "Lec1.html#梯度下降示例",
+    "href": "Lec1.html#梯度下降示例",
+    "title": "0x01 线性回归",
+    "section": "梯度下降示例",
+    "text": "梯度下降示例\n\n图例：https://www.geogebra.org/classic/jdjne9bg\n计算示例：见稍后玻尔平台演示"
+  },
+  {
+    "objectID": "Lec1.html#建模流程",
+    "href": "Lec1.html#建模流程",
+    "title": "0x01 线性回归",
+    "section": "建模流程",
+    "text": "建模流程\n\n训练集 \\(T\\)：采集到的样本数据\n\n一个训练数据记为 \\((x,y)\\)，第 \\(i\\) 个训练数据记为 \\((x_i,y_i)\\)\n训练集大小：\\(m\\)\n\n\\(T=\\{(x_1,y_1),(x_2,y_2),...,(x_m,y_m)\\}=\\{(x_i,y_i)\\}\\)\n\n决策函数假设：\\(f(x)=kx+b\\)，属性 \\(x\\) 相应的预测结果 \\(f(x)\\)\n损失函数: \\(L(k,b;T)\\)，在已知训练集 \\(T\\) 的情况下关于决策函数参数 \\(k,b\\) 的函数，用于量化参数的效果，即在训练集上预测值与真实值的差距，一般越小越好。\n\n\\(L(k,b;T)=\\frac{1}{m}((f(x_1)-y_1)^2+(f(x_2)-y_2)^2+...+(f(x_m)-y_m)^2)=\\frac{1}{m}\\sum\\limits_{i=1}^m(f(x_i)-y_i)^2\\)\n\n学习问题（最优化问题）：选择某种算法，如导数法、配方法、梯度下降法等，求解使得 \\(L(k,b;T)\\) 取最小值时的参数 \\(k,b\\)"
+  },
+  {
+    "objectID": "Lec1.html#建模流程-1",
+    "href": "Lec1.html#建模流程-1",
+    "title": "0x01 线性回归",
+    "section": "建模流程",
+    "text": "建模流程"
+  },
+  {
+    "objectID": "Lec1.html#求最小值的方法",
+    "href": "Lec1.html#求最小值的方法",
+    "title": "0x01 线性回归",
+    "section": "求最小值的方法",
+    "text": "求最小值的方法\n\n配方法\n导数法\n梯度下降法"
+  },
+  {
+    "objectID": "Lec1.html#下节预告",
+    "href": "Lec1.html#下节预告",
+    "title": "0x01 线性回归",
+    "section": "下节预告",
+    "text": "下节预告"
+  },
+  {
+    "objectID": "Lec1.html#下节预告感知机",
+    "href": "Lec1.html#下节预告感知机",
+    "title": "0x01 线性回归",
+    "section": "下节预告——感知机",
+    "text": "下节预告——感知机\n\n二分类问题\n新的损失函数与梯度下降方法\n新的平面几何知识"
   }
 ]
