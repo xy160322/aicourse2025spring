@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "Lec2.html#例地图分界问题",
+    "href": "Lec2.html#例地图分界问题",
+    "title": "0x02 感知机",
+    "section": "例：地图分界问题",
+    "text": "例：地图分界问题\n\n\n给定一个地图上点的坐标集，红色为一类（标签 \\(+1\\)），蓝色为另一类（标签 \\(-1\\)）\n数据集可以记为 \\(T=\\{x_i,y_i,Y_i\\}\\)，其中 \\((x_i,y_i)\\) 为坐标，\\(Y_i\\in\\{-1,+1\\}\\) 为标签\n现在想找到一条直线，使得两类点正好在直线的两侧\n本讲中，假设这样的直线一定存在（线性可分假设）"
+  },
+  {
+    "objectID": "Lec2.html#回归与分类",
+    "href": "Lec2.html#回归与分类",
+    "title": "0x02 感知机",
+    "section": "回归与分类",
+    "text": "回归与分类\n\n回归：模型输出值是连续的，如房价\n分类：模型输出值是离散的，如二分类输出 \\(0\\) 或 \\(1\\)，或者输出 \\(-1\\) 或 \\(+1\\)"
+  },
+  {
+    "objectID": "Lec2.html#模型",
+    "href": "Lec2.html#模型",
+    "title": "0x02 感知机",
+    "section": "模型",
+    "text": "模型"
+  },
+  {
+    "objectID": "Lec2.html#如何表示平面上一条直线",
+    "href": "Lec2.html#如何表示平面上一条直线",
+    "title": "0x02 感知机",
+    "section": "如何表示平面上一条直线？",
+    "text": "如何表示平面上一条直线？\n\n一次函数：\\(y=kx+b(k\\neq 0)\\)\n漏网之鱼？\\(x=c\\) 或 \\(y=b\\)\n事实上，平面上所有直线都可以表示为 \\(ax+by+c=0\\)，其中 \\(a,b\\) 不同时为 \\(0\\)"
+  },
+  {
+    "objectID": "Lec2.html#如何定义决策函数",
+    "href": "Lec2.html#如何定义决策函数",
+    "title": "0x02 感知机",
+    "section": "如何定义决策函数？",
+    "text": "如何定义决策函数？\n\n可以定义与决策直线相关的 \\(f(x,y)\\)：\n\n当点 \\((x,y)\\) 在直线“特定的”一侧时，输出 \\(+1\\)\n当点 \\((x,y)\\) 在直线另一侧时，输出 \\(-1\\)\n\n例：决策直线为 \\(3x-4y+4=0\\)"
+  },
+  {
+    "objectID": "Lec2.html#点与直线关系",
+    "href": "Lec2.html#点与直线关系",
+    "title": "0x02 感知机",
+    "section": "点与直线关系",
+    "text": "点与直线关系\n\n对于直线 \\(ax+by+c=0\\) ，如果点 \\((x_0,y_0)\\) 在直线上，则 \\(ax_0+by_0+c=0\\)\n如果点 \\((x_0,y_0)\\) 不在直线上，则：\n\n当 \\(b&gt;0\\) 时：\n\n\\(ax_0+by_0+c&gt;0 \\Leftrightarrow\\) 点 \\((x_0,y_0)\\) 在直线上方\n\\(ax_0+by_0+c&lt;0 \\Leftrightarrow\\) 点 \\((x_0,y_0)\\) 在直线下方\n\n当 \\(b&lt;0\\) 时，有类似的结论\n当 \\(b=0\\) 时，可类似判断左侧或右侧\n\n例子：https://www.geogebra.org/classic/abmqrkcj"
+  },
+  {
+    "objectID": "Lec2.html#决策函数",
+    "href": "Lec2.html#决策函数",
+    "title": "0x02 感知机",
+    "section": "决策函数",
+    "text": "决策函数\n\n由于 \\(ax+by+c=-ax-by-c=0\\)，因此对于线性可分的数据集，一定存在一条直线 \\(ax+by+c=0\\) ，使得：\n\n对于 \\(+1\\) 样本 \\((x_0,y_0)\\)，\\(ax_0+by_0+c&gt;0\\)\n对于 \\(-1\\) 样本 \\((x_0,y_0)\\)，\\(ax_0+by_0+c&lt;0\\)\n\n决策函数 \\(f(x,y)=sign(ax+by+c)\\)，其中 \\[\nsign(x)=\n\\begin{cases}\n+1,\\quad x\\geqslant 0\\\\\n-1,\\quad x&lt; 0\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "Lec2.html#如何评估损失-labct",
+    "href": "Lec2.html#如何评估损失-labct",
+    "title": "0x02 感知机",
+    "section": "如何评估损失 \\(L(a,b,c;T)\\) ？",
+    "text": "如何评估损失 \\(L(a,b,c;T)\\) ？\n\n数一下误分类点的个数？过于生硬且不可导\n统计所有误分类点到当前直线的距离\n距离 \\(=0\\Leftrightarrow\\) 分类成功\n例子：https://www.geogebra.org/classic/mdaqupry"
+  },
+  {
+    "objectID": "Lec2.html#点-x_0y_0-到直线-axbyc0-的距离",
+    "href": "Lec2.html#点-x_0y_0-到直线-axbyc0-的距离",
+    "title": "0x02 感知机",
+    "section": "点 \\((x_0,y_0)\\) 到直线 \\(ax+by+c=0\\) 的距离",
+    "text": "点 \\((x_0,y_0)\\) 到直线 \\(ax+by+c=0\\) 的距离\n\n\n\n方法1\n\n解出直线 \\(AB\\) 的方程（利用两条直线垂直）\n与直线 \\(L\\) 联立求出 \\(B\\) 点坐标\n用两点间距离公式计算线段 \\(AB\\) 长\n\n方法2\n\n转化为求二次函数最小值问题\n在条件 \\(ax+by+c=0\\) 下求 \\(\\sqrt{(x-x_0)^2+(y-y_0)^2}\\) 的最小值"
+  },
+  {
+    "objectID": "Lec2.html#点到直线距离方法3",
+    "href": "Lec2.html#点到直线距离方法3",
+    "title": "0x02 感知机",
+    "section": "点到直线距离——方法3",
+    "text": "点到直线距离——方法3\n\n借助柯西不等式： \\((a^2+b^2)(c^2+d^2) \\geqslant  (a c+b d)^2\\)\n证明：\n\n左侧减右侧有\n\\[\\begin{align}\n&(a^2c^2+a^2d^2+b^2c^2+b^2d^2)-(a^2c^2+2a b c d+b^2d^2)\\\\=& a^2d^2+2a b c d +b^2c^2\\\\=&(a d+b c)^2\\geqslant 0\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "Lec2.html#点到直线距离",
+    "href": "Lec2.html#点到直线距离",
+    "title": "0x02 感知机",
+    "section": "点到直线距离",
+    "text": "点到直线距离\n\n\n\\[\\begin{align}\nA B^2 &=(x-x_0)^2+(y-y_0)^2 \\\\ &=\\frac{1}{a^2+b^2}((x-x_0)^2+(y-y_0)^2)(a^2+b^2)\\\\ & \\geqslant  \\frac{1}{a^2+b^2}(a(x-x_0)+b(y-y_0))^2\\\\ &=\\frac{1}{a^2+b^2}(a x+by+c-c-ax_0-by_0)^2\\\\ &=\\frac{1}{a^2+b^2}(ax_0+by_0+c)^2\n\\end{align}\n\\]\n因此 \\(A B=\\frac{|ax_0+by_0+c| }{\\sqrt{a^2+b^2}}\\)"
+  },
+  {
+    "objectID": "Lec2.html#损失函数",
+    "href": "Lec2.html#损失函数",
+    "title": "0x02 感知机",
+    "section": "损失函数",
+    "text": "损失函数\n\n对于误分类点 \\((x_i,y_i)\\) 来说，有 \\(-Y_i(ax_i+by_i+c)&gt;0\\)\n误分类点 \\((x_i,y_i)\\) 到直线的距离为: \\(-Y_i\\frac{ax_i+by_i+c}{\\sqrt{a^2+b^2}}\\)\n在参数 \\((a,b)\\) 确定的情况下，\\(\\sqrt{a^2+b^2}\\) 可以忽略\n定义单个误分类点 \\((x_i,y_i)\\) 的损失为：\\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\\)\n假设当前的误分类点集合为 \\(M\\)（注意不是所有点集），则损失函数为 \\[\nL(a,b,c;M)=\\sum_{(x_i,y_i)\\in M}loss(x_i,y_i)=\\sum_{(x_i,y_i)\\in M}-Y_i(ax_i+by_i+c)\n\\]"
+  },
+  {
+    "objectID": "Lec2.html#学习算法",
+    "href": "Lec2.html#学习算法",
+    "title": "0x02 感知机",
+    "section": "学习算法",
+    "text": "学习算法\n\n每次确定一组参数 \\((a,b)\\) 后，不使用 \\(L(a,b,c;M)\\)，而是随机挑选一个误分类点 \\((x_i,y_i)\\)，用 \\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\\) 作为损失函数进行梯度下降\n即每次的损失函数可能都不一样，且只考虑一个随机的误分类点造成的损失\n三个参数的导数分别为： \\[\n  \\begin{cases}\n   loss_{a}(a,b,c;x_i,y_i)=-Y_ix_i\\\\\n  loss_{b}(a,b,c;x_i,y_i)=-Y_iy_i\\\\\n  loss_{c}(a,b,c;x_i,y_i)=-Y_i\n  \\end{cases}\n  \\]\n对应的参数更新为：（ \\(0&lt;\\alpha\\leqslant 1\\) 为学习率或步长） \\[\n\\begin{cases}\na=a-loss_{a}(a,b,c;x_i,y_i)=a+\\alpha Y_ix_i\\\\\na=a-loss_{b}(a,b,c;x_i,y_i)=b+\\alpha Y_iy_i\\\\\nc=c-loss_{c}(a,b,c;x_i,y_i)=c+\\alpha Y_i\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "Lec2.html#一次函数的导数",
+    "href": "Lec2.html#一次函数的导数",
+    "title": "0x02 感知机",
+    "section": "一次函数的导数",
+    "text": "一次函数的导数\n\n一元一次函数 \\(f(x)=ax+b(a\\neq 0)\\)\n\n\\(\\frac{f(x+\\Delta x)-f(x)}{\\Delta x}=a\\)\n事实上，一元一次函数的图像为一条直线，过任意点的切线斜率都和这条直线本身的斜率相等\n\n三元一次函数 \\(f(x,y,z)=ax+by+cz+d\\)的偏导数\n\n\\(f_x(x,y,z)\\)，即把 \\(y,z\\) 视为常数，此时 \\(f(x,y,z)\\) 相当于一次函数，按一次函数求导规则对 \\(x\\) 求导即可，因此 \\(f_x(x,y,z)=a\\)\n同理，\\(f_y(x,y,z)=b,f_z(x,y,z)=c\\)"
+  },
+  {
+    "objectID": "Lec2.html#算法收敛性证明",
+    "href": "Lec2.html#算法收敛性证明",
+    "title": "0x02 感知机",
+    "section": "算法收敛性证明",
+    "text": "算法收敛性证明\n设训练集 \\(\\{(x_i,y_i,Y_i)\\}\\) 是线性可分的，其中标签 \\(Y_i\\in \\{-1,+1\\}\\) ，训练集大小为 \\(m\\)\n(1)存在满足条件 \\((a^*)^2+(b^*)^2+(c^*)^2=1\\) 的直线 \\(a^*x+b^*y+c^*=0\\) 将训练集完全分开；且存在 \\(\\gamma&gt;0\\)，对所有 \\(i\\) ：\\(Y_i(a^* x_i+b^* y_i+c^*)\\geqslant \\gamma\\)\n(2)令 \\(R=\\max_{1\\leq i\\leq m}\\sqrt{x_i^2+y_i^2+1}\\)，则算法在训练集上的误分类次数 \\(k\\) 满足 \\(k\\leqslant \\left(\\frac{R}{\\gamma}\\right)^2\\)\n证明：(1)显然。 (2)算法从 \\((a_0=0,b_0=0,c_0=0)\\) 开始.\n令 \\((a_{k-1},b_{k-1},c_{k-1})\\) 是发现第 \\(k\\) 个误分类实例时参数，则有 \\[Y_i(a_{k-1}x_i+b_{k-1}y_i+c_{k-1})&lt;0\\]，其中 \\((x_i,y_i)\\) 是第 \\(k\\) 个误分类实例。则参数的更新为： \\[\n\\begin{cases}\n   a_k=a_{k-1}+\\alpha Y_ix_i\\\\\n  b_k=b_{k-1}+\\alpha Y_iy_i\\\\\n  b^k=b_{k-1}+\\alpha Y_i\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "Lec2.html#又遇柯西不等式柯西不等式证柯西不等式",
+    "href": "Lec2.html#又遇柯西不等式柯西不等式证柯西不等式",
+    "title": "0x02 感知机",
+    "section": "又遇柯西不等式——柯西不等式证柯西不等式",
+    "text": "又遇柯西不等式——柯西不等式证柯西不等式\n已知 \\((a^2+b^2)(c^2+d^2) \\geqslant  (a c+b d)^2\\)，求证 \\[\n(a^2+b^2+c^2)(d^2+e^2+f^2) \\geqslant  (a d+b e+cf)^2\n\\]\n证明：\n\n由柯西不等式， \\(ad+be\\leqslant |ad+be|\\leqslant \\sqrt{(a^2+b^2)(d^2+e^2)}\\)\n因此：\\(((a d+b e)+cf)^2\\leqslant (\\sqrt{(a^2+b^2)(d^2+e^2)}+cf)\\)\n再对右侧 \\(\\sqrt{a^2+b^2}\\cdot \\sqrt{d^2+e^2}+c\\cdot f\\) 使用柯西不等式即得证"
+  },
+  {
+    "objectID": "Lec2.html#动手计算python实现梯度下降",
+    "href": "Lec2.html#动手计算python实现梯度下降",
+    "title": "0x02 感知机",
+    "section": "动手计算——python实现梯度下降",
+    "text": "动手计算——python实现梯度下降\nimport pandas as pd\ndef finderror(a,b,c,data): # 寻找误分类点\n    for idx,(x,y,Y) in enumerate(data):\n        if Y*(a*x+b*y+c)&lt;0:\n            return x,y,Y # 返回误分类点的数据\n    return 0,0,0\n\ndf=pd.read_csv(\"ditu.csv\") # 读取文件中的数据\ndata=df.to_numpy()\na=0 # a,b,c的初值\nb=1\nc=0\nalpha=0.7 # 学习率\nwhile True:\n    x,y,Y=finderror(a,b,c,data) # 寻找一个误分类点\n    if Y==0: # 如果无误分类点则结束\n        break\n    a+=alpha*Y*x # 更新参数a,b,c\n    b+=alpha*Y*y\n    c+=alpha*Y\nprint(a,b,c)  # 输出最后的参数a,b,c"
+  },
+  {
+    "objectID": "Lec2.html#动手计算python调用sklearn",
+    "href": "Lec2.html#动手计算python调用sklearn",
+    "title": "0x02 感知机",
+    "section": "动手计算——python调用sklearn",
+    "text": "动手计算——python调用sklearn\nfrom sklearn.linear_model import Perceptron\ndf=pd.read_csv(\"ditu.csv\") # 读取文件中的数据\nmodel=Perceptron() # 默认参数调用模型\n# model=Perceptron(max_iter=100000,n_iter_no_change=70000) # 强制跑上万次迭代\nx=df[[\"jingdu\",\"weidu\"]]\ny=(df[\"label\"])\nmodel.fit(x,y)\nprint(model.coef_,model.intercept_) # 输出模型参数a,b,c\nprint(\"socre in training set: \",model.score(x,y)) \n# 模型结果在训练集上的得分（确定的比例），如何能实现线性可分，则得分应为1，即100%"
+  }
+]
