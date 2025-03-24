@@ -88,7 +88,7 @@
     "href": "Lec2.html#学习算法",
     "title": "0x02 感知机",
     "section": "学习算法",
-    "text": "学习算法\n\n每次确定一组参数 \\((a,b)\\) 后，不使用 \\(L(a,b,c;M)\\)，而是随机挑选一个误分类点 \\((x_i,y_i)\\)，用 \\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\\) 作为损失函数进行梯度下降\n即每次的损失函数可能都不一样，且只考虑一个随机的误分类点造成的损失\n三个参数的导数分别为： \\[\n  \\begin{cases}\n   loss_{a}(a,b,c;x_i,y_i)=-Y_ix_i\\\\\n  loss_{b}(a,b,c;x_i,y_i)=-Y_iy_i\\\\\n  loss_{c}(a,b,c;x_i,y_i)=-Y_i\n  \\end{cases}\n  \\]\n对应的参数更新为：（ \\(0&lt;\\alpha\\leqslant 1\\) 为学习率或步长） \\[\n\\begin{cases}\na=a-loss_{a}(a,b,c;x_i,y_i)=a+\\alpha Y_ix_i\\\\\na=a-loss_{b}(a,b,c;x_i,y_i)=b+\\alpha Y_iy_i\\\\\nc=c-loss_{c}(a,b,c;x_i,y_i)=c+\\alpha Y_i\n\\end{cases}\n\\]"
+    "text": "学习算法\n\n每次确定一组参数 \\((a,b,c)\\) 后，不使用 \\(L(a,b,c;M)\\)，而是随机挑选一个误分类点 \\((x_i,y_i)\\)，用 \\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\\) 作为损失函数进行梯度下降\n即每次的损失函数可能都不一样，且只考虑一个随机的误分类点造成的损失\n三个参数的导数分别为： \\[\n  \\begin{cases}\n   loss_{a}(a,b,c;x_i,y_i)=-Y_ix_i\\\\\n  loss_{b}(a,b,c;x_i,y_i)=-Y_iy_i\\\\\n  loss_{c}(a,b,c;x_i,y_i)=-Y_i\n  \\end{cases}\n  \\]\n对应的参数更新为：（ \\(0&lt;\\alpha\\leqslant 1\\) 为学习率或步长） \\[\n\\begin{cases}\na=a-loss_{a}(a,b,c;x_i,y_i)=a+\\alpha Y_ix_i\\\\\nb=b-loss_{b}(a,b,c;x_i,y_i)=b+\\alpha Y_iy_i\\\\\nc=c-loss_{c}(a,b,c;x_i,y_i)=c+\\alpha Y_i\n\\end{cases}\n\\]"
   },
   {
     "objectID": "Lec2.html#一次函数的导数",
@@ -116,7 +116,7 @@
     "href": "Lec2.html#动手计算python实现梯度下降",
     "title": "0x02 感知机",
     "section": "动手计算——python实现梯度下降",
-    "text": "动手计算——python实现梯度下降\nimport pandas as pd\ndef finderror(a,b,c,data): # 寻找误分类点\n    for idx,(x,y,Y) in enumerate(data):\n        if Y*(a*x+b*y+c)&lt;0:\n            return x,y,Y # 返回误分类点的数据\n    return 0,0,0\n\ndf=pd.read_csv(\"ditu.csv\") # 读取文件中的数据\ndata=df.to_numpy()\na=0 # a,b,c的初值\nb=1\nc=0\nalpha=0.7 # 学习率\nwhile True:\n    x,y,Y=finderror(a,b,c,data) # 寻找一个误分类点\n    if Y==0: # 如果无误分类点则结束\n        break\n    a+=alpha*Y*x # 更新参数a,b,c\n    b+=alpha*Y*y\n    c+=alpha*Y\nprint(a,b,c)  # 输出最后的参数a,b,c"
+    "text": "动手计算——python实现梯度下降\nimport pandas as pd\nimport os\ndf=pd.read_csv(\"example.csv\") # 读取文件中的数据\ndata=df.values.tolist() # 把数据转换为列表，列表中的每个元素都是x,y,Y的形式\ndef finderror(a,b,c): # 在参数a,b,c的情况下，找到一个分类错误的点\n    for x,y,Y in data: # 遍历所有的数据点\n        if Y*(a*x+b*y+c)&lt;=0: # 如果分类错误\n            return x,y,Y # 返回这个点的坐标与标签\n    return 0,0,0 # 如果没有分类错误的点，返回0,0,0 \na,b,c=0,1,0 # 初始化a,b,c\nalpha=0.5 # 学习率\ncnt=100 # 迭代次数\nfor i in range(cnt): # 迭代cnt次\n    x,y,Y=finderror(a,b,c) # 找到一个分类错误的点\n    if Y==0: # 如果没有分类错误的点\n        print(\"迭代了\",i,\"次\") # 输出迭代次数 \n        break # 提前结束迭代\n    a=a+alpha*Y*x # 更新参数a,b,c\n    b=b+alpha*Y*y\n    c=c+alpha*Y\nprint(a) # 输出最终的参数a,b,c\nprint(b)\nprint(c)"
   },
   {
     "objectID": "Lec2.html#动手计算python调用sklearn",
@@ -124,5 +124,12 @@
     "title": "0x02 感知机",
     "section": "动手计算——python调用sklearn",
     "text": "动手计算——python调用sklearn\nfrom sklearn.linear_model import Perceptron\ndf=pd.read_csv(\"ditu.csv\") # 读取文件中的数据\nmodel=Perceptron() # 默认参数调用模型\n# model=Perceptron(max_iter=100000,n_iter_no_change=70000) # 强制跑上万次迭代\nx=df[[\"jingdu\",\"weidu\"]]\ny=(df[\"label\"])\nmodel.fit(x,y)\nprint(model.coef_,model.intercept_) # 输出模型参数a,b,c\nprint(\"socre in training set: \",model.score(x,y)) \n# 模型结果在训练集上的得分（确定的比例），如何能实现线性可分，则得分应为1，即100%"
+  },
+  {
+    "objectID": "Lec2.html#梯度下降理解",
+    "href": "Lec2.html#梯度下降理解",
+    "title": "0x02 感知机",
+    "section": "梯度下降理解",
+    "text": "梯度下降理解\n\n原损失：\\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\\)\n新损失：\n\n\\[\n\\begin{align}\nloss(a',b',c';x_i,y_i)&=-Y_i(a'x_i+b'y_i+c')\\\\\n&=-Y_i((a+\\alpha Y_i x_i)x_i+(b+\\alpha Y_iy_i)y_i+(c+\\alpha Y_i))\\\\\n&=-Y_i(ax_i+by_i+c)-Y_i^2\\alpha(x_i^2+y_i^2+1)\\\\\n& &lt; -Y_i(ax_i+by_i+c)=loss(a,b,c;x_i,y_i)\n\\end{align}\n\\]"
   }
 ]

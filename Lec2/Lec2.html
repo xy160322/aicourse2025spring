@@ -216,10 +216,10 @@
 
 - 现有某宝宝的一些体温与是否生病的记录，如何得到一个“靠谱”的临界判断温度呢？或者说如何对一个新产生的体温进行是否发烧的评估呢？
 
-::: {#319b3782 .cell execution_count=1}
+::: {#914813bc .cell execution_count=1}
 
 ::: {.cell-output .cell-output-display}
-![](Lec2_files/figure-revealjs/cell-2-output-1.png){width=812 height=503}
+![](Lec2_files/figure-revealjs/cell-2-output-1.png){width=806 height=503}
 :::
 :::
 
@@ -240,7 +240,7 @@
 <li><p>现在想找到一条直线，使得两类点正好在直线的两侧</p></li>
 <li><p>本讲中，假设这样的直线一定存在（<strong>线性可分假设</strong>）</p></li>
 </ul>
-<div id="5584b49f" class="cell" data-execution_count="2">
+<div id="09ef9958" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -288,7 +288,7 @@
 </ul></li>
 <li>例：决策直线为 <span class="math inline">\(3x-4y+4=0\)</span></li>
 </ul>
-<div id="ae61a2d8" class="cell" data-execution_count="3">
+<div id="7b93c815" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -402,7 +402,7 @@ L(a,b,c;M)=\sum_{(x_i,y_i)\in M}loss(x_i,y_i)=\sum_{(x_i,y_i)\in M}-Y_i(ax_i+by_
 <section id="学习算法" class="slide level2">
 <h2>学习算法</h2>
 <ul>
-<li><p>每次确定一组参数 <span class="math inline">\((a,b)\)</span> 后，不使用 <span class="math inline">\(L(a,b,c;M)\)</span>，而是随机挑选一个误分类点 <span class="math inline">\((x_i,y_i)\)</span>，用 <span class="math inline">\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\)</span> 作为损失函数进行梯度下降</p></li>
+<li><p>每次确定一组参数 <span class="math inline">\((a,b,c)\)</span> 后，不使用 <span class="math inline">\(L(a,b,c;M)\)</span>，而是随机挑选一个误分类点 <span class="math inline">\((x_i,y_i)\)</span>，用 <span class="math inline">\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\)</span> 作为损失函数进行梯度下降</p></li>
 <li><p>即每次的损失函数可能都不一样，且只考虑一个随机的误分类点造成的损失</p></li>
 <li><p>三个参数的导数分别为： <span class="math display">\[
   \begin{cases}
@@ -414,11 +414,26 @@ L(a,b,c;M)=\sum_{(x_i,y_i)\in M}loss(x_i,y_i)=\sum_{(x_i,y_i)\in M}-Y_i(ax_i+by_
 <li><p>对应的参数更新为：（ <span class="math inline">\(0&lt;\alpha\leqslant 1\)</span> 为学习率或步长） <span class="math display">\[
 \begin{cases}
 a=a-loss_{a}(a,b,c;x_i,y_i)=a+\alpha Y_ix_i\\
-a=a-loss_{b}(a,b,c;x_i,y_i)=b+\alpha Y_iy_i\\
+b=b-loss_{b}(a,b,c;x_i,y_i)=b+\alpha Y_iy_i\\
 c=c-loss_{c}(a,b,c;x_i,y_i)=c+\alpha Y_i
 \end{cases}
 \]</span></p></li>
 </ul>
+</section>
+<section id="梯度下降理解" class="slide level2">
+<h2>梯度下降理解</h2>
+<ul>
+<li>原损失：<span class="math inline">\(loss(a,b,c;x_i,y_i)=-Y_i(ax_i+by_i+c)\)</span></li>
+<li>新损失：</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+loss(a',b',c';x_i,y_i)&amp;=-Y_i(a'x_i+b'y_i+c')\\
+&amp;=-Y_i((a+\alpha Y_i x_i)x_i+(b+\alpha Y_iy_i)y_i+(c+\alpha Y_i))\\
+&amp;=-Y_i(ax_i+by_i+c)-Y_i^2\alpha(x_i^2+y_i^2+1)\\
+&amp; &lt; -Y_i(ax_i+by_i+c)=loss(a,b,c;x_i,y_i)
+\end{align}
+\]</span></p>
 </section>
 <section id="一次函数的导数" class="slide level2">
 <h2>一次函数的导数</h2>
@@ -440,7 +455,7 @@ c=c-loss_{c}(a,b,c;x_i,y_i)=c+\alpha Y_i
 <ul>
 <li>例：数据集内有6个点，经过三次更新后收敛</li>
 </ul>
-<div id="ff387147" class="cell" data-execution_count="4">
+<div id="a5a268f7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -535,26 +550,28 @@ k\leqslant \left(\frac{R}{\gamma}\right)^2
 <section id="动手计算python实现梯度下降" class="slide level2">
 <h2>动手计算——python实现梯度下降</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a></a><span class="kw">def</span> finderror(a,b,c,data): <span class="co"># 寻找误分类点</span></span>
-<span id="cb1-3"><a></a>    <span class="cf">for</span> idx,(x,y,Y) <span class="kw">in</span> <span class="bu">enumerate</span>(data):</span>
-<span id="cb1-4"><a></a>        <span class="cf">if</span> Y<span class="op">*</span>(a<span class="op">*</span>x<span class="op">+</span>b<span class="op">*</span>y<span class="op">+</span>c)<span class="op">&lt;</span><span class="dv">0</span>:</span>
-<span id="cb1-5"><a></a>            <span class="cf">return</span> x,y,Y <span class="co"># 返回误分类点的数据</span></span>
-<span id="cb1-6"><a></a>    <span class="cf">return</span> <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span></span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>df<span class="op">=</span>pd.read_csv(<span class="st">"ditu.csv"</span>) <span class="co"># 读取文件中的数据</span></span>
-<span id="cb1-9"><a></a>data<span class="op">=</span>df.to_numpy()</span>
-<span id="cb1-10"><a></a>a<span class="op">=</span><span class="dv">0</span> <span class="co"># a,b,c的初值</span></span>
-<span id="cb1-11"><a></a>b<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb1-12"><a></a>c<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb1-13"><a></a>alpha<span class="op">=</span><span class="fl">0.7</span> <span class="co"># 学习率</span></span>
-<span id="cb1-14"><a></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb1-15"><a></a>    x,y,Y<span class="op">=</span>finderror(a,b,c,data) <span class="co"># 寻找一个误分类点</span></span>
-<span id="cb1-16"><a></a>    <span class="cf">if</span> Y<span class="op">==</span><span class="dv">0</span>: <span class="co"># 如果无误分类点则结束</span></span>
-<span id="cb1-17"><a></a>        <span class="cf">break</span></span>
-<span id="cb1-18"><a></a>    a<span class="op">+=</span>alpha<span class="op">*</span>Y<span class="op">*</span>x <span class="co"># 更新参数a,b,c</span></span>
-<span id="cb1-19"><a></a>    b<span class="op">+=</span>alpha<span class="op">*</span>Y<span class="op">*</span>y</span>
-<span id="cb1-20"><a></a>    c<span class="op">+=</span>alpha<span class="op">*</span>Y</span>
-<span id="cb1-21"><a></a><span class="bu">print</span>(a,b,c)  <span class="co"># 输出最后的参数a,b,c</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a></a><span class="im">import</span> os</span>
+<span id="cb1-3"><a></a>df<span class="op">=</span>pd.read_csv(<span class="st">"example.csv"</span>) <span class="co"># 读取文件中的数据</span></span>
+<span id="cb1-4"><a></a>data<span class="op">=</span>df.values.tolist() <span class="co"># 把数据转换为列表，列表中的每个元素都是x,y,Y的形式</span></span>
+<span id="cb1-5"><a></a><span class="kw">def</span> finderror(a,b,c): <span class="co"># 在参数a,b,c的情况下，找到一个分类错误的点</span></span>
+<span id="cb1-6"><a></a>    <span class="cf">for</span> x,y,Y <span class="kw">in</span> data: <span class="co"># 遍历所有的数据点</span></span>
+<span id="cb1-7"><a></a>        <span class="cf">if</span> Y<span class="op">*</span>(a<span class="op">*</span>x<span class="op">+</span>b<span class="op">*</span>y<span class="op">+</span>c)<span class="op">&lt;=</span><span class="dv">0</span>: <span class="co"># 如果分类错误</span></span>
+<span id="cb1-8"><a></a>            <span class="cf">return</span> x,y,Y <span class="co"># 返回这个点的坐标与标签</span></span>
+<span id="cb1-9"><a></a>    <span class="cf">return</span> <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span> <span class="co"># 如果没有分类错误的点，返回0,0,0 </span></span>
+<span id="cb1-10"><a></a>a,b,c<span class="op">=</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span> <span class="co"># 初始化a,b,c</span></span>
+<span id="cb1-11"><a></a>alpha<span class="op">=</span><span class="fl">0.5</span> <span class="co"># 学习率</span></span>
+<span id="cb1-12"><a></a>cnt<span class="op">=</span><span class="dv">100</span> <span class="co"># 迭代次数</span></span>
+<span id="cb1-13"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(cnt): <span class="co"># 迭代cnt次</span></span>
+<span id="cb1-14"><a></a>    x,y,Y<span class="op">=</span>finderror(a,b,c) <span class="co"># 找到一个分类错误的点</span></span>
+<span id="cb1-15"><a></a>    <span class="cf">if</span> Y<span class="op">==</span><span class="dv">0</span>: <span class="co"># 如果没有分类错误的点</span></span>
+<span id="cb1-16"><a></a>        <span class="bu">print</span>(<span class="st">"迭代了"</span>,i,<span class="st">"次"</span>) <span class="co"># 输出迭代次数 </span></span>
+<span id="cb1-17"><a></a>        <span class="cf">break</span> <span class="co"># 提前结束迭代</span></span>
+<span id="cb1-18"><a></a>    a<span class="op">=</span>a<span class="op">+</span>alpha<span class="op">*</span>Y<span class="op">*</span>x <span class="co"># 更新参数a,b,c</span></span>
+<span id="cb1-19"><a></a>    b<span class="op">=</span>b<span class="op">+</span>alpha<span class="op">*</span>Y<span class="op">*</span>y</span>
+<span id="cb1-20"><a></a>    c<span class="op">=</span>c<span class="op">+</span>alpha<span class="op">*</span>Y</span>
+<span id="cb1-21"><a></a><span class="bu">print</span>(a) <span class="co"># 输出最终的参数a,b,c</span></span>
+<span id="cb1-22"><a></a><span class="bu">print</span>(b)</span>
+<span id="cb1-23"><a></a><span class="bu">print</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="动手计算python调用sklearn" class="slide level2">
 <h2>动手计算——python调用sklearn</h2>
