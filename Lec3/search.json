@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "Lec3.html#二分类问题",
+    "href": "Lec3.html#二分类问题",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "二分类问题",
+    "text": "二分类问题\n\n如何线性可分，那么使用感知机即可解决\n但现实情况中，可能会遇到“线性几乎可分”的数据，此时感知机无法使用（不收敛）"
+  },
+  {
+    "objectID": "Lec3.html#宝宝是否发烧了",
+    "href": "Lec3.html#宝宝是否发烧了",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "宝宝是否发烧了？",
+    "text": "宝宝是否发烧了？\n\n成人一般体温超过37度就可能发烧了\n而有的幼龄宝宝尚处于发育阶段，体温波动幅度较大，可能在健康情况下体温也会达到37.1度\n现有某宝宝的一些体温与是否生病（1或0）的记录，如何得到一个“靠谱”的临界判断温度呢？或者说如何对一个新产生的体温进行是否发烧的评估呢？"
+  },
+  {
+    "objectID": "Lec3.html#宝宝是否生病了",
+    "href": "Lec3.html#宝宝是否生病了",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "宝宝是否生病了？",
+    "text": "宝宝是否生病了？\n\n给定体温数据集 \\((x_i,Y_i)\\)，其中 \\(x_i\\) 为体温，\\(Y_i\\in \\{0,1\\}\\) 为是否生病的标签\n建立模型，在给定新的体温时能够预测是否生病\n假设：在体温较高时，生病的情况比不生病的情况多，反之亦然"
+  },
+  {
+    "objectID": "Lec3.html#决策函数",
+    "href": "Lec3.html#决策函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "决策函数",
+    "text": "决策函数\n\n\n\\[\nf(x)=\n\\begin{cases}\n1\\quad x\\geqslant 37.1\\\\\n0\\quad x&lt;37.1\n\\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n分段函数，分界点如何确定？\n过于生硬，与之相关的损失函数很可能不可导\n希望再“平滑”一点"
+  },
+  {
+    "objectID": "Lec3.html#理想的决策函数",
+    "href": "Lec3.html#理想的决策函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "理想的决策函数",
+    "text": "理想的决策函数\n\n\n\n\n\n\n\n\n\n\n\n\n\n非分段函数\n函数值 \\(f(x)\\) 满足：\\(0&lt;f(x)&lt;1\\)\n存在对称中心\n函数值一直在增长\n偏离对称中心后，迅速收敛到 0 或 1\n在对称中心附近增长很快\n函数值可以理解为是正类的概率"
+  },
+  {
+    "objectID": "Lec3.html#补充指数函数",
+    "href": "Lec3.html#补充指数函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "补充：指数函数",
+    "text": "补充：指数函数\n\n函数 \\(y=a^x\\) 称为指数函数，注意 \\(a&gt;0,a\\neq 1\\)。\\(x=0\\) 时，函数值为 \\(1\\)。\n典型代表：\\(y=e^x\\)，其中 \\(e\\) 约等于 \\(2.71828\\)，类似于 \\(\\pi\\)，是一个无理数。\\(y=e^x\\) 的图像为:"
+  },
+  {
+    "objectID": "Lec3.html#尝试",
+    "href": "Lec3.html#尝试",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "尝试",
+    "text": "尝试\n\n使用常数、反比例函数 \\(y=\\frac{1}{x}\\) 和 指数函数 \\(y=e^x\\) 复合出有下面图像的函数\n即：使用常数、\\(e\\)、\\(x\\)、加减乘除乘方运算组合出有下面图像的函数，尝试"
+  },
+  {
+    "objectID": "Lec3.html#sigmoid函数yfrac11e-axb",
+    "href": "Lec3.html#sigmoid函数yfrac11e-axb",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "sigmoid函数：\\(y=\\frac{1}{1+e^{-(ax+b)}}\\)",
+    "text": "sigmoid函数：\\(y=\\frac{1}{1+e^{-(ax+b)}}\\)"
+  },
+  {
+    "objectID": "Lec3.html#决策函数-1",
+    "href": "Lec3.html#决策函数-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "决策函数",
+    "text": "决策函数\n\n决策函数：\\(f(x)=\\frac{1}{1+e^{-(ax+b)}}\\)\n根据 \\(f(x)\\) 预测结果：\n\n如果 \\(f(x)\\geqslant 0.5\\)，则认为是正类（生病）\n如果 \\(f(x)&lt;0.5\\)，则认为是负类（不生病）"
+  },
+  {
+    "objectID": "Lec3.html#损失函数均方误差",
+    "href": "Lec3.html#损失函数均方误差",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数——均方误差？",
+    "text": "损失函数——均方误差？\n\n\n\n决策函数：\\(f(x)=\\frac{1}{1+e^{-(ax+b)}}\\)\n损失函数：\\(L(a,b;T)=\\sum\\limits_{i=1}^m loss(a,b;x_i,Y_i)\\)\n由于参数 \\(a,b\\) 一定会拿来计算 \\(f(x)\\)，因此 \\(loss(a,b;T)\\) 也可写作：\\(loss(f(x_i),Y_i)\\)\nMSE损失函数：\\(L(a,b;T)=\\sum\\limits_{i=1}^m (f(x_i)-Y_i)^2\\)"
+  },
+  {
+    "objectID": "Lec3.html#均方误差的损失函数是不是凸函数",
+    "href": "Lec3.html#均方误差的损失函数是不是凸函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "均方误差的损失函数是不是凸函数？",
+    "text": "均方误差的损失函数是不是凸函数？\n\n吴恩达讲义：非凸"
+  },
+  {
+    "objectID": "Lec3.html#均方误差的损失函数是不是凸函数-1",
+    "href": "Lec3.html#均方误差的损失函数是不是凸函数-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "均方误差的损失函数是不是凸函数？",
+    "text": "均方误差的损失函数是不是凸函数？\n\n问deepseek：\n\n逻辑斯谛回归的损失函数为什么不使用均方误差？\n\n非凸，存在多个局部极小值\n部分位置梯度很小，参数更新缓慢\n不符合概率模型假设\n\n为什么逻辑斯谛回归中均方误差的损失函数是非凸的？\n\n给出了理论证明"
+  },
+  {
+    "objectID": "Lec3.html#均方误差的损失函数是不是凸函数-2",
+    "href": "Lec3.html#均方误差的损失函数是不是凸函数-2",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "均方误差的损失函数是不是凸函数？",
+    "text": "均方误差的损失函数是不是凸函数？\n\nGeogebra：https://www.geogebra.org/classic/xs7wqtmh\nWhy not Mean Squared Error(MSE) as a loss function for Logistic Regression? 🤔\n知乎：对于逻辑回归，为什么说平方损失函数是非凸的？\nCSDN：为什么不用平方误差（MSE）作为Logistic回归的损失函数？\n使用梯度下降时发现，初始点梯度容易为0，参数几乎不更新，无法“下降”"
+  },
+  {
+    "objectID": "Lec3.html#损失函数均方误差-1",
+    "href": "Lec3.html#损失函数均方误差-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数——均方误差",
+    "text": "损失函数——均方误差\n\n均方误差时，\\(loss(f(x_i),Y_i)=(f(x_i)-Y_i)^2\\) ，当 \\(Y_i=1\\) 时，预测值 \\(f(x_i)\\) 越接近 \\(1\\)，\\(loss\\) 值越接近 \\(0\\)；反之如果预测值 \\(f(x_i)\\) 越接近 \\(0\\)，则 \\(loss\\) 值越接近1（见下图）\n在 \\(f(x_i)\\) 和 \\(Y_i\\) 的值都很小时，“惩罚”得不够“明显”"
+  },
+  {
+    "objectID": "Lec3.html#损失函数",
+    "href": "Lec3.html#损失函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数",
+    "text": "损失函数\n\n考虑更好的 \\(loss(f(x_i),Y_i)\\) 形式，按 \\(Y_i\\) 分类：\n\n当 \\(Y_i=1\\) 时，预测值 \\(f(x_i)\\) 越接近 \\(1\\)，\\(loss\\) 值越接近 \\(0\\)；反之如果预测值 \\(f(x_i)\\) 越接近 \\(0\\)，则 \\(loss\\) 值越接近无穷大（见下图）\n当 \\(Y_i=0\\) 时，预测值 \\(f(x_i)\\) 越接近 \\(0\\)，\\(loss\\) 值越接近 \\(0\\)；反之如果预测值 \\(f(x_i)\\) 越接近 \\(1\\)，则 \\(loss\\) 值越接近无穷大。"
+  },
+  {
+    "objectID": "Lec3.html#损失函数y_i1",
+    "href": "Lec3.html#损失函数y_i1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数（\\(Y_i=1\\)）",
+    "text": "损失函数（\\(Y_i=1\\)）\n\n当 \\(Y_i=1\\) 时，记 \\(loss(f(x_i),Y_i)=g(f(x_i))\\)，则希望能找到如下图图像的一个函数： \\(g(x)\\)\n\n\\(x\\) 越接近 \\(1\\)，\\(g(x)\\) 值越接近 \\(0\\)；\n\\(x\\) 越接近 \\(0\\)，\\(g(x)\\) 值越接近无穷大。"
+  },
+  {
+    "objectID": "Lec3.html#补充对数函数",
+    "href": "Lec3.html#补充对数函数",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "补充：对数函数",
+    "text": "补充：对数函数\n\n典型代表：\\(y=\\ln x\\)，满足 \\(e^y=x\\)，图像如下："
+  },
+  {
+    "objectID": "Lec3.html#损失函数y_i1-1",
+    "href": "Lec3.html#损失函数y_i1-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数（\\(Y_i=1\\)）",
+    "text": "损失函数（\\(Y_i=1\\)）\n\n左图：\\(y=\\ln x\\)，即 \\(e^y=x\\)\n右图：\\(g(x)=?\\)"
+  },
+  {
+    "objectID": "Lec3.html#损失函数y_i0",
+    "href": "Lec3.html#损失函数y_i0",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数（\\(Y_i=0\\)）",
+    "text": "损失函数（\\(Y_i=0\\)）\n\n当 \\(Y_i=0\\) 时，记 \\(loss(f(x_i),Y_i)=h(f(x_i))\\)，则希望能找到如下图图像的一个函数： \\(h(x)\\)。\n\n\\(x\\) 越接近 \\(0\\)，\\(h(x)\\) 值越接近 \\(0\\)；\n\\(x\\) 越接近 \\(1\\)，则 \\(h(x)\\) 值越接近无穷大"
+  },
+  {
+    "objectID": "Lec3.html#损失函数y_i0-1",
+    "href": "Lec3.html#损失函数y_i0-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数（\\(Y_i=0\\)）",
+    "text": "损失函数（\\(Y_i=0\\)）\n\n左图：\\(y=\\ln x\\)，即 \\(e^y=x\\)\n右图：\\(h(x)=?\\)"
+  },
+  {
+    "objectID": "Lec3.html#损失函数-1",
+    "href": "Lec3.html#损失函数-1",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数",
+    "text": "损失函数\n\n\n综上，损失函数可以写成： \\[\nloss(f(x_i),Y_i)=\n\\begin{cases}\n-\\ln(f(x_i)),\\quad &Y_i=1\\\\\n-\\ln(1-f(x_i)),\\quad& Y_i=0\n\\end{cases}\n\\]\n挑战：把 \\(loss(f(x_i),Y_i)\\) 写非分段的形式，即一个统一的形式\n\\(loss(f(x_i),Y_i)=-(Y_i\\ln(f(x_i))+(1-Y_i)\\ln(1-f(x_i)))\\)\n总损失函数： \\[\nL(a,b;T)=\\frac{1}{m}\\sum\\limits_{i=1}^m loss(f(x_i),Y_i)=-\\frac{1}{m}\\sum\\limits_{i=1}^m(Y_i\\ln(f(x_i))+(1-Y_i)\\ln(1-f(x_i)))\n\\]\n事实上，此损失函数有一个专有名称：交叉熵，有信息论和概率上的意义。"
+  },
+  {
+    "objectID": "Lec3.html#损失函数-2",
+    "href": "Lec3.html#损失函数-2",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "损失函数",
+    "text": "损失函数\n\n凸函数，可以使用类似线性回归的梯度下降方法求解"
+  },
+  {
+    "objectID": "Lec3.html#动手计算",
+    "href": "Lec3.html#动手计算",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "动手计算",
+    "text": "动手计算\n\n决策函数：\\(f(x)=\\frac{1}{1+e^{-(ax+b)}}\\)\n损失函数： \\[\nL(a,b;T)=\\frac{1}{m}\\sum\\limits_{i=1}^m loss(f(x_i),Y_i)=-\\frac{1}{m}\\sum\\limits_{i=1}^m(Y_i\\ln(f(x_i))+(1-Y_i)\\ln(1-f(x_i)))\n\\]\n求导：\n\n\\(L_a(a,b;T)=\\frac{1}{m}\\sum\\limits_{i=1}^m(\\frac{1}{1+e^{-(ax_i+b)}}-Y_i)x_i=\\frac{1}{m}\\sum\\limits_{i=1}^m(f(x_i)-Y_i)x_i\\)\n\\(L_b(a,b;T)=\\frac{1}{m}\\sum\\limits_{i=1}^m(\\frac{1}{1+e^{-(ax_i+b)}}-Y_i)x_i=\\frac{1}{m}\\sum\\limits_{i=1}^m(f(x_i)-Y_i)\\)"
+  },
+  {
+    "objectID": "Lec3.html#动手计算导数法",
+    "href": "Lec3.html#动手计算导数法",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "动手计算——导数法",
+    "text": "动手计算——导数法\n困难，略"
+  },
+  {
+    "objectID": "Lec3.html#动手计算梯度下降",
+    "href": "Lec3.html#动手计算梯度下降",
+    "title": "0x03 逻辑斯谛回归",
+    "section": "动手计算——梯度下降",
+    "text": "动手计算——梯度下降\n\n切线指方向，导数定步长\n任选 \\((a,b)\\) ，每次同时更新： \\[\n\\begin{cases}\na_{k+1}=a_k-\\alpha L_a(a,b;T)\\\\\nb_{k+1}=b_k-\\alpha L_b(a,b;T)\n\\end{cases}\n\\]\n可以证明，选取合适的 \\(\\alpha\\) 时，可以收敛到最小值\n更一般地，损失函数满足一定的条件（凸性、可微与Lipschitz连续性）时，梯度下降可以收敛最小值"
+  }
+]
