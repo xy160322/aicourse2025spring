@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "Lec4.html#k近邻算法",
+    "href": "Lec4.html#k近邻算法",
+    "title": "0x04 K近邻算法",
+    "section": "K近邻算法",
+    "text": "K近邻算法\n\nK-Nearest Neighbors(KNN)\n例：鸢尾花数据集\n\n特征：花萼长度（Sepal Length）、花萼宽度（Sepal Width）\n标签：山鸢尾（setosa）和变色鸢尾（versicolor）\n\n\n\n\n\n\n\n\nsepal-length\nsepal-width\nlabel\n\n\n\n\n0\n5.1\n3.5\n1\n\n\n1\n4.9\n3\n1\n\n\n2\n4.7\n3.2\n1\n\n\n3\n4.6\n3.1\n1\n\n\n4\n5\n3.6\n1\n\n\n5\n5.4\n3.9\n1"
+  },
+  {
+    "objectID": "Lec4.html#鸢尾花数据",
+    "href": "Lec4.html#鸢尾花数据",
+    "title": "0x04 K近邻算法",
+    "section": "鸢尾花数据",
+    "text": "鸢尾花数据\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n感知机\n逻辑斯谛回归\nKNN？"
+  },
+  {
+    "objectID": "Lec4.html#k近邻算法-1",
+    "href": "Lec4.html#k近邻算法-1",
+    "title": "0x04 K近邻算法",
+    "section": "K近邻算法",
+    "text": "K近邻算法\n\n\n\n\n\n\n\n\n\n\n\n\n\n参数：\\(K\\)，选择待预测数据点“最近”的 \\(K\\) 个邻居点\n\\(K\\) 个点中哪一类最多，就预测新数据点为哪一类\n\\(K\\) 取奇数\n“最近”：“距离”最近，“距离”可取欧氏距离"
+  },
+  {
+    "objectID": "Lec4.html#不同k的对比",
+    "href": "Lec4.html#不同k的对比",
+    "title": "0x04 K近邻算法",
+    "section": "不同\\(K\\)的对比",
+    "text": "不同\\(K\\)的对比\n\n\n\n\n\n\n\n\n\n\n对平面上每个点做出预测，可画出分界线\n\\(K\\) 越大越好？"
+  },
+  {
+    "objectID": "Lec4.html#另一个参数距离的定义",
+    "href": "Lec4.html#另一个参数距离的定义",
+    "title": "0x04 K近邻算法",
+    "section": "另一个参数：距离的定义",
+    "text": "另一个参数：距离的定义\n\n欧氏距离：\\(\\sqrt{(x_i-x_j)^2+(y_i-y_j)^2}\\)\n曼哈顿距离：\\(|x_i-x_j|+|y_i-y_j|\\)，英文Manhattan Distance\n切比雪夫距离：\\(\\max(|x_i-x_j|,|y_i-y_j|)\\)，英文Chebyshev Distance。\n\n\n与原点距离为1的三种轨迹"
+  },
+  {
+    "objectID": "Lec4.html#l_p-距离",
+    "href": "Lec4.html#l_p-距离",
+    "title": "0x04 K近邻算法",
+    "section": "\\(L_p\\) 距离",
+    "text": "\\(L_p\\) 距离\n\n也称闵可夫斯基距离，英文Minkowski Distance\n在二维的情况下，\\(L_p(i,j)=(|x_i-x_j|^p+|y_i-y_j|^p)^{\\frac{1}{p}}\\)\n\n\\(p=1\\) 时，曼哈顿距离：\\(|x_i-x_j|+|y_i-y_j|\\)，出租车几何\n\\(p=2\\) 时，欧氏距离：\\(\\sqrt{(x_i-x_j)^2+(y_i-y_j)^2}\\)\n\\(p=\\infty\\) 时，切比雪夫距离：\\(\\max(|x_i-x_j|,|y_i-y_j|)\\)。国际象棋中的王的移动，图像处理、聚类分析、数学等。"
+  },
+  {
+    "objectID": "Lec4.html#余弦距离",
+    "href": "Lec4.html#余弦距离",
+    "title": "0x04 K近邻算法",
+    "section": "余弦距离",
+    "text": "余弦距离\n\n在平面直角坐标系中，两个点 \\((x_i,y_i),(x_j,y_j)\\) 的余弦距离为两个点与原点连线的夹角cos值\n计算公式：\\(\\cos \\theta =\\frac{x_ix_j+y_iy_j}{\\sqrt{x_i^2+y_i^2}\\sqrt{x_j^2+y_j^2}}\\)\n应用\n\n文本分析，如两本书的相似度（关键词出现次数）\n推荐系统无处不在：在线购物、新闻、视频网站……\n\n社交统中用户相似度，如不同维度方面的兴趣程度（“旅行”、“音乐”、“阅读”、“体育”的兴趣程度）\n电影推荐系统，用户在不同类电影方面的相似度（科幻、动作、喜剧、纪录片）\n\nMBTI性格分析，如何衡量两种性格的接近程度？"
+  }
+]
