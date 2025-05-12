@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "Lec5.html#决策树",
+    "href": "Lec5.html#决策树",
+    "title": "0x05 决策树",
+    "section": "决策树",
+    "text": "决策树\n\nhttp://20q.net/\n（以前的）联通、移动、电信客服\n通过“问题树”来分类的模型\n\n\n\n\n\n\n\nID\n年龄\n有工作\n有自己的房子\n信用\n类别\n\n\n\n\n0\n1\n青年\n否\n否\n一般\n否\n\n\n1\n2\n青年\n否\n否\n好\n否\n\n\n2\n3\n青年\n是\n否\n好\n是\n\n\n3\n4\n青年\n是\n是\n一般\n是\n\n\n4\n5\n青年\n否\n否\n一般\n否\n\n\n5\n6\n中年\n否\n否\n一般\n否"
+  },
+  {
+    "objectID": "Lec5.html#如何选择特征信息熵",
+    "href": "Lec5.html#如何选择特征信息熵",
+    "title": "0x05 决策树",
+    "section": "如何选择特征——信息熵",
+    "text": "如何选择特征——信息熵\n\n信息量：\n\n一个随机事件 \\(X_i\\) 发生的概率为 \\(P(X_i)\\)，那么 \\(X_i\\) 发生所能提供的信息量是 \\(I(X_i)=-\\log_2 P(X_i)\\)\n理解：记 \\(P(X_i)=\\frac{1}{x}\\)，则 \\(I(X_i)=-\\log_2 P(X_i)=-\\log_2 \\frac{1}{x}=\\log_2 x\\)，\\(I(X_i)\\) 可以看作表示这个事件发生需要的二进制位数（比特数）\n\n熵：来源于热力学，表现“混杂程度”\n信息熵（Information Entropy）：\n\n对于随机变量 \\(X\\)，\\(H(X)=\\sum_{i=1}^nP(X_i)I(X_i)=-\\sum_{i=1}^nP(X_i)\\log_2 P(X_i)\\)\n可以理解为表示一个分布的不确定程度\n当某个概率为 \\(1\\) 时，\\(H(X)=0\\)；当所有事件发生概率相等时，\\(H(X)=\\log_2 n\\)。"
+  },
+  {
+    "objectID": "Lec5.html#信息熵",
+    "href": "Lec5.html#信息熵",
+    "title": "0x05 决策树",
+    "section": "信息熵",
+    "text": "信息熵\n\n信息熵（Information Entropy）\n\n对于随机变量 \\(X\\)，\\(H(X)=\\sum_{i=1}^nP(X_i)I(X_i)=-\\sum_{i=1}^nP(X_i)\\log_2 P(X_i)\\)\n可以理解为表示一个分布的不确定程度\n当某个概率为 \\(1\\) 时，\\(H(X)=0\\)；当所有事件发生概率相等时，\\(H(X)=\\log_2 n\\)。\n\n可以用信息熵衡量集合的混杂程度\n\n此时 \\(P(X_i)\\) 为 \\(X_i\\) 这一类样本出现的频率\n例：集合 \\(D=\\{a,b,a,a,b,a,c,d\\}\\)， \\[\n  H(D)=(-\\frac{1}{2}\\log_2\\frac{1}{2})+(-\\frac{1}{4}\\log_2\\frac{1}{4})+(-\\frac{1}{8}\\log_2\\frac{1}{8})+(-\\frac{1}{8}\\log_2\\frac{1}{8})=1.75\n  \\]"
+  },
+  {
+    "objectID": "Lec5.html#信息增益",
+    "href": "Lec5.html#信息增益",
+    "title": "0x05 决策树",
+    "section": "信息增益",
+    "text": "信息增益"
+  },
+  {
+    "objectID": "Lec5.html#信息增益information-gain",
+    "href": "Lec5.html#信息增益information-gain",
+    "title": "0x05 决策树",
+    "section": "信息增益（Information gain）",
+    "text": "信息增益（Information gain）\n\n特征 \\(A\\) 对训练数据集 \\(D\\) 的信息增益 \\(g(D,A)\\) 定义为集合 \\(D\\) 的信息熵与用特征 \\(A\\) 对 \\(D\\) 划分后的“加权熵（条件熵）” \\(H(D|A)\\) 之差\n\\(g(D,A)=H(D)-H(D|A)\\)\n\\(H(D|A)=\\sum_{i=1}^k\\frac{|D_i|}{|D|}H(D_i)\\)，其中 \\(D_i\\) 为根据特征 \\(A\\) 将 \\(D\\) 划分的 \\(k\\) 个子集"
+  },
+  {
+    "objectID": "Lec5.html#例子",
+    "href": "Lec5.html#例子",
+    "title": "0x05 决策树",
+    "section": "例子",
+    "text": "例子\n\\[\n\\begin{align}\nH(D)=&-\\frac{9}{15}\\log_2\\frac{9}{15}-\\frac{6}{15}\\log_2\\frac{6}{15}=0.971\\\\\ng(D,A_1)=&H(D)-(\\frac{5}{15}H(D_1)+\\frac{5}{15}H(D_2)+\\frac{5}{15}H(D_3))\\\\\n=&0.971-(\\frac{5}{15}(-\\frac{2}{5}\\log_2\\frac{2}{5}-\\frac{3}{5}\\log_2\\frac{3}{5})+\\frac{5}{15}(-\\frac{3}{5}\\log_2\\frac{3}{5}-\\frac{2}{5}\\log_2\\frac{2}{5})+\\\\&\\frac{5}{15}(-\\frac{4}{5}\\log_2\\frac{4}{5}-\\frac{1}{5}\\log_2\\frac{1}{5}))\\\\=&0.971-0.888=0.083\n\\end{align}\n\\]\n\\(A_1\\) 为年龄，\\(D_1,D_2,D_3\\) 为用特征年龄划分出的三个子集\n可以发现，特征“有自己的房子”产生的信息增益最大，它划分出的两个子集 \\(D_1,D_2\\)，一个里面只有同一类样本点，另一个则继续按上述方法尝试选择特征进行划分，通过计算，最终“有无工作”特征信息增益最大，并且划分出的两个集合都是“纯净集合”，算法结束"
+  }
+]
